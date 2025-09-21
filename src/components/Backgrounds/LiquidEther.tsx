@@ -22,6 +22,7 @@ export interface LiquidEtherProps {
   takeoverDuration?: number;
   autoResumeDelay?: number;
   autoRampDuration?: number;
+  children?: React.ReactNode;
 }
 
 interface SimOptions {
@@ -75,6 +76,7 @@ export default function LiquidEther({
   takeoverDuration = 0.25,
   autoResumeDelay = 1000,
   autoRampDuration = 0.6,
+  children,
 }: LiquidEtherProps): React.ReactElement {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const webglRef = useRef<LiquidEtherWebGL | null>(null);
@@ -1288,6 +1290,8 @@ export default function LiquidEther({
       ref={mountRef}
       className={`liquid-ether-container ${className || ""}`}
       style={style}
-    />
+    >
+      {children}
+    </div>
   );
 }
