@@ -11,10 +11,13 @@ import Background5 from "./components/Background5";
 import Background6 from "./components/Background6";
 import Background7 from "./components/Background7";
 import Background8 from "./components/Background8";
+import LandingPage from "./pages/LandingPage.js";
 
 function App() {
   return (
-    <div className="bg-white flex flex-col p-4 gap-5 h-full w-full justify-center items-center">
+    // <div className="bg-white flex flex-col p-4 gap-5 h-full w-full justify-center items-center">
+    <div>
+<LandingPage />
       <div className="h-[100vh] w-full bg-black  shadow-lg"></div>
       <div className="h-full w-full  p-10  shadow-lg flex justify-center [perspective:1000px] overflow-hidden bg-[url(/moon.jpg)] bg-cover">
         <motion.div
@@ -25,7 +28,9 @@ function App() {
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ amount: 0.6, once: true }}
           className="h-[100vh] w-[50vw] transparent  shadow-red-400 shadow-md border-solid border-3 border-black backdrop-blur-md"
-        ></motion.div>
+        >
+          <p>dshbdfsdhfb</p>
+        </motion.div>
         <motion.div
           className="h-[60vh] w-[20vw] transparent absolute  bottom-10 right-0 backdrop-blur-md mr-8 border-2 border-blue-400"
           initial={{ opacity: 0, translateY: 400 }}
@@ -40,10 +45,10 @@ function App() {
           scale={1}
           noiseIntensity={0}
           rotation={0}
-          color="#6a408fff"
+          color="#E4702F"
         ></Background1>
-      </div> */}
-      {/* <div className="h-[100vh] w-full  bg-black">
+      </div>
+      <div className="h-[100vh] w-full  bg-black">
         <Background2
           colors={["#5227FF", "#FF9FFC", "#B19EEF"]}
           mouseForce={40}
@@ -61,8 +66,8 @@ function App() {
           autoResumeDelay={3000}
           autoRampDuration={0.6}
         />
-      </div> */}
-      {/* <div className="h-[100vh] w-full  bg-black relative">
+      </div>
+      <div className="h-[100vh] w-full  bg-black relative">
         <Background3
           raysOrigin="top-center"
           raysColor="#00ffff"
@@ -77,11 +82,9 @@ function App() {
           distortion={0.05}
           className="custom-rays"
         />
-      </div> */}
-      {/* <div className="h-[100vh] bg-black w-full relative">
-        <Background4 hue={220} xOffset={0} speed={1} intensity={1} size={1} />
-      </div> */}
-      {/* <div className="h-[100vh] bg-black w-full relative">
+      </div>
+     
+      <div className="h-[100vh] bg-black w-full relative">
         <Background5
           mouseRepulsion={true}
           mouseInteraction={true}
@@ -95,24 +98,24 @@ function App() {
           autoCenterRepulsion={0}
           starSpeed={0.5}
         />
-      </div> */}
-      {/* <div className="h-[100vh] bg-black w-full relative">
+      </div>
+      <div className="h-[100vh] bg-black w-full relative">
         <Background6
-          color={[1 , 0.7, 1]}
+          color={[0 , 0, 0.8]}
           mouseReact={true}
           amplitude={0.1}
           speed={1.0}
         />
-      </div> */}
-      {/* <div className="h-[100vh] bg-black w-full relative">
+      </div>
+      <div className="h-[100vh] bg-black w-full relative">
         <Background7
-          hoverIntensity={1.0}
+          hoverIntensity={0.5}
           rotateOnHover={true}
           hue={0}
           forceHoverState={false}
         />
-      </div> */}
-      {/* <div className="h-[100vh] bg-black w-full relative">
+      </div>
+      <div className="h-[100vh] bg-black w-full relative">
         <Background8
           baseColor={[0.1, 0.1, 0.1]}
           speed={0.5}
