@@ -1,69 +1,120 @@
-# React + TypeScript + Vite
+# KatharOs Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive website for KatharOs - a secure disk wiping solution with military-grade encryption and advanced algorithms.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Responsive Design**: Fully responsive layout that works seamlessly across desktop, tablet, and mobile devices
+- **Modern UI/UX**: Beautiful animations and interactive elements using Framer Motion
+- **WebGL Backgrounds**: Stunning visual effects with custom WebGL shaders and backgrounds
+- **TypeScript**: Full type safety and better development experience
+- **Fast Performance**: Built with Vite for lightning-fast development and optimized builds
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Graphics**: WebGL with OGL library
+- **Routing**: React Router DOM
+- **Linting**: ESLint
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository:
+```bash
+git clone https://github.com/vivekkedia22/KatharOs-Webiste.git
+cd KatharOs-Website
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install dependencies:
+```bash
+npm install
 ```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## 🏗️ Build for Production
+
+```bash
+npm run build
+```
+
+The built files will be in the `dist` directory.
+
+## 📱 Components
+
+- **NavBar**: Responsive navigation with mobile-friendly design
+- **FirstPage**: Hero section with interactive liquid background
+- **SecondPage**: Feature showcase with 3D animations and orb background
+- **ThirdPage**: Card-based content display with motion effects
+- **Footer**: Comprehensive footer with links and contact information
+- **Background Components**: Various WebGL-powered visual effects
+
+## 🎨 Key Features
+
+### Responsive Design
+- Mobile-first approach with Tailwind CSS breakpoints
+- Adaptive layouts that work on all screen sizes
+- Touch-friendly interactions for mobile devices
+
+### Interactive Backgrounds
+- **LiquidEther**: Fluid simulation with mouse interaction
+- **Orb**: Animated orb with shader effects
+- **LightRays**: Dynamic light ray effects
+
+### Smooth Animations
+- Page transitions and scroll-triggered animations
+- 3D transforms and perspective effects
+- Hover states and interactive elements
+
+## 🚀 Development
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+### Project Structure
+
+```
+src/
+├── components/
+│   ├── Backgrounds/     # WebGL background components
+│   ├── FirstPage.tsx    # Hero section
+│   ├── SecondPage.tsx   # Feature section
+│   ├── ThirdPage.tsx    # Content cards
+│   ├── Footer.tsx       # Footer component
+│   └── NavBar.tsx       # Navigation
+├── pages/
+│   └── LandingPage.tsx  # Main landing page
+└── App.tsx              # Root component
+```
+
+## 📄 License
+
+MIT License - see LICENSE file for details.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📞 Contact
+
+For questions or support, please contact the development team.
+
+---
+
+Built with ❤️ for secure data management • Open Source • MIT License
