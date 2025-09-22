@@ -28,10 +28,7 @@ function FirstPage() {
           </p>
           <div className="flex flex-col md:flex-row gap-4 md:gap-[10vh] w-full md:w-auto">
             <Link
-              to="/"
-              onClick={() => {
-                alert("clicked");
-              }}
+              to="/about"
               className="px-6 md:px-10 py-3 md:py-5 bg-white/10 backdrop-saturate-150 backdrop-blur-md border border-white/20 hover:bg-white/20 rounded-4xl transition-all duration-300 font-slim text-center text-sm md:text-base"
             >
               About Us

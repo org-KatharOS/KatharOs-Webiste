@@ -24,7 +24,7 @@ function SecondPage() {
             initial={{ opacity: 0, translateY: 400 }}
             whileInView={{ opacity: 1, translateY: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{}}
+            viewport={{amount:0}}
           >
             <div className="h-[30%] md:h-[20%] flex justify-center items-center">
               <p className="text-white text-xl md:text-2xl lg:text-3xl text-center font-thin">
