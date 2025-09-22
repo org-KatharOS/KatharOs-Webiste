@@ -128,6 +128,16 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             {children}
           </td>
         ),
+        a: ({ children, href }) => (
+          <a 
+            href={href} 
+            className="text-[#9E4AF2] hover:text-[#b19eef] transition-colors duration-200"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {children}
+          </a>
+        ),
         }}
       >
         {content}

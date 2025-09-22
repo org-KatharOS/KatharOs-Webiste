@@ -56,7 +56,7 @@ function Footer() {
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="docs"
                       className="text-gray-300 hover:text-purple-300 transition-colors duration-200 text-sm md:text-base"
                     >
                       Documentation
@@ -80,15 +80,6 @@ function Footer() {
                 <ul className="space-y-1 md:space-y-3 text-sm md:text-base text-gray-300">
                   <li className="hover:text-white transition-colors duration-200">
                     support@katharos.com
-                  </li>
-                  <li className="hover:text-white transition-colors duration-200">
-                    +1 (555) 123-4567
-                  </li>
-                  <li className="hover:text-white transition-colors duration-200">
-                    Open Source Project
-                  </li>
-                  <li className="hover:text-white transition-colors duration-200">
-                    Global Community
                   </li>
                 </ul>
               </div>
@@ -120,7 +111,7 @@ function Footer() {
                     Discord
                   </a>
                   <a
-                    href="#"
+                    href="docs"
                     className="text-gray-300 hover:text-purple-300 transition-all duration-200 text-sm md:text-base flex items-center justify-center md:justify-start group"
                   >
                     <span className="w-2 h-2 md:w-3 md:h-3 bg-red-400 rounded-full mr-3 group-hover:bg-red-300 transition-colors"></span>
@@ -132,8 +123,7 @@ function Footer() {
 
             <div className="border-t border-white/10 mt-2 md:mt-4 pt-2 md:pt-4 text-center">
               <p className="text-xs md:text-sm text-gray-400">
-                Built with ❤️ for secure data management • Open Source • MIT
-                License
+                Built with ❤️ for secure data management, by Team Katharos
               </p>
             </div>
           </div>
