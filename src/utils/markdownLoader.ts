@@ -16,10 +16,12 @@ export interface DocSection {
   id: string;
   title: string;
   subsections: DocContent[];
+  order: number;
 }
 
-// Import all markdown files
+// Import all markdown files and section config
 const markdownModules = import.meta.glob('../docs/*.md', { as: 'raw', eager: true });
+const sectionConfig = import.meta.glob('../docs/sections.json', { eager: true });
 
 export const loadDocumentation = (): DocSection[] => {
   const docs: DocContent[] = [];
@@ -53,22 +55,29 @@ export const loadDocumentation = (): DocSection[] => {
     sectionsMap.get(sectionId)!.push(doc);
   });
 
-  // Convert to section objects
-  const sections: DocSection[] = [];
-  const sectionTitles: Record<string, string> = {
-    'getting-started': 'Getting Started',
-    'features': 'Features',
-    'advanced': 'Advanced',
-    'api': 'API Reference'
-  };
+  // Load section configuration
+  const configData = Object.values(sectionConfig)[0] as any;
+  const sectionConfigMap = new Map<string, { title: string; order: number }>();
+  
+  configData.sections.forEach((section: any) => {
+    sectionConfigMap.set(section.id, { title: section.title, order: section.order });
+  });
 
+  // Convert to section objects with ordering
+  const sections: DocSection[] = [];
+  
   sectionsMap.forEach((subsections, sectionId) => {
+    const config = sectionConfigMap.get(sectionId) || { title: sectionId, order: 999 };
     sections.push({
       id: sectionId,
-      title: sectionTitles[sectionId] || sectionId,
-      subsections
+      title: config.title,
+      subsections,
+      order: config.order
     });
   });
+
+  // Sort sections by order
+  sections.sort((a, b) => a.order - b.order);
 
   return sections;
 };

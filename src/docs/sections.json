@@ -1,0 +1,24 @@
+{
+  "sections": [
+    {
+      "id": "getting-started",
+      "title": "Getting Started",
+      "order": 1
+    },
+    {
+      "id": "features",
+      "title": "Features",
+      "order": 2
+    },
+    {
+      "id": "advanced",
+      "title": "Advanced",
+      "order": 3
+    },
+    {
+      "id": "api",
+      "title": "API Reference",
+      "order": 4
+    }
+  ]
+}

@@ -17,7 +17,7 @@ const CodeBlock = ({ code, language }: { code: string; language?: string }) => {
 
   return (
     <div className="relative">
-      <pre className="bg-black/50 text-green-400 p-4 rounded-md overflow-x-auto pr-12">
+      <pre className="bg-black/50 text-green-400 p-2 sm:p-4 rounded-md overflow-x-auto pr-8 sm:pr-12 text-xs sm:text-sm">
         <code className={language ? `language-${language}` : ''}>{code}</code>
       </pre>
       <button
@@ -50,27 +50,27 @@ interface MarkdownRendererProps {
 
 export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="prose prose-sm sm:prose lg:prose-lg prose-invert w-full max-w-xs sm:max-w-none bg-[#070715] overflow-x-hidden">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
         h1: ({ children }) => (
-          <h1 className="text-4xl font-bold text-white mb-4 font-playfair">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 font-playfair">
             {children}
           </h1>
         ),
         h2: ({ children }) => (
-          <h2 className="text-2xl font-semibold text-white mb-4 mt-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-white mb-4 mt-8">
             {children}
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="text-xl font-semibold text-white mb-4 mt-8">
+          <h3 className="text-lg sm:text-xl font-semibold text-white mb-4 mt-8">
             {children}
           </h3>
         ),
         p: ({ children }) => (
-          <p className="text-gray-300 leading-relaxed mb-6">
+          <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-6">
             {children}
           </p>
         ),
@@ -83,7 +83,7 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
           }
           
           return (
-            <code className="bg-gray-800 text-green-400 px-2 py-1 rounded text-sm" {...props}>
+            <code className="bg-gray-800 text-green-400 px-1 sm:px-2 py-1 rounded text-xs sm:text-sm" {...props}>
               {children}
             </code>
           );

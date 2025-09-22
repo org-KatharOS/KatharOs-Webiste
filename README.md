@@ -1,6 +1,6 @@
-# KatharOs Website
+# KatharOS Website
 
-A modern, responsive website for KatharOs - a secure disk wiping solution with military-grade encryption and advanced algorithms.
+A modern, responsive website for KatharOS - a secure disk wiping solution with military-grade encryption and advanced algorithms.
 
 ## 🚀 Features
 
@@ -23,17 +23,20 @@ A modern, responsive website for KatharOs - a secure disk wiping solution with m
 ## 📦 Installation
 
 1. Clone the repository:
+
 ```bash
-git clone https://github.com/vivekkedia22/KatharOs-Webiste.git
-cd KatharOs-Website
+git clone https://github.com/vivekkedia22/KatharOS-Webiste.git
+cd KatharOS-Website
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -60,16 +63,19 @@ The built files will be in the `dist` directory.
 ## 🎨 Key Features
 
 ### Responsive Design
+
 - Mobile-first approach with Tailwind CSS breakpoints
 - Adaptive layouts that work on all screen sizes
 - Touch-friendly interactions for mobile devices
 
 ### Interactive Backgrounds
+
 - **LiquidEther**: Fluid simulation with mouse interaction
 - **Orb**: Animated orb with shader effects
 - **LightRays**: Dynamic light ray effects
 
 ### Smooth Animations
+
 - Page transitions and scroll-triggered animations
 - 3D transforms and perspective effects
 - Hover states and interactive elements

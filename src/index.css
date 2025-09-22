@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 
+html, body {
+  background-color: #070715;
+  color: white;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -40,4 +45,22 @@
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #374151 #070715;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #070715;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #374151;
+  border-radius: 4px;
 }

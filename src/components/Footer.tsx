@@ -22,7 +22,7 @@ function Footer() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 text-white">
               <div className="lg:col-span-1 text-center md:text-left">
                 <h3 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  KatharOs
+                  KatharOS
                 </h3>
                 <p className="text-sm md:text-lg text-gray-300 mb-2 md:mb-4 leading-relaxed">
                   Securely wipe your disk with military-grade encryption and
