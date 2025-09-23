@@ -7,68 +7,47 @@ order: 1
 
 # Installation
 
-Welcome to Katharos, the secure disk wiping utility. This guide will help you install Katharos on your system.
+Welcome to KatharOS, a secure disk wiping software. This guide will help you install KatharOS and prepare your bootable flash drive.
 
-## Prerequisites
+## 1. Prerequisites
 
-Before installing Katharos, ensure you have:
+### 1.1 Hardware Requirements
 
-- Administrator/root privileges
-- At least 50MB of free disk space
-- A supported operating system (Windows, macOS, Linux)
+1. USB flash drive (minimum 4GB, 8GB+ recommended)
+2. Computer with USB boot support
+3. Minimum 2GB RAM
 
-## Download Options
+### 1.2 Software Requirements
 
-### Option 1: Direct Download
+1. ISO flashing tool:
+   1. Windows: [Rufus](https://rufus.ie/)
+   2. Cross-platform: [Balena Etcher](https://www.balena.io/etcher/)
+2. Administrative/root privileges
+3. KatharOS ISO file
 
-Download the latest release from our official website:
+## 2. Download KatharOS
 
-```bash
-# Windows
-curl -O https://releases.katharos.dev/latest/katharos-windows.exe
+1. Download the ISO file: [Download KatharOS ISO](https://www.kathara.org/download.html)
 
-# macOS
-curl -O https://releases.katharos.dev/latest/katharos-macos.dmg
+## 3. Creating Bootable USB
 
-# Linux
-curl -O https://releases.katharos.dev/latest/katharos-linux.tar.gz
-```
+Once you have the ISO downloaded, follow the steps below to flash it onto a USB drive.
 
-### Option 2: Package Managers
+### 3.1 Using Rufus (Windows)
 
-#### Windows (Chocolatey)
-```powershell
-choco install katharos
-```
+1. Download and open [Rufus](https://rufus.ie/).
+2. Insert your USB flash drive.
+3. Configure Rufus:
+   1. **Device:** Select your USB drive
+   2. **Boot selection:** Choose the KatharOS ISO file
+   3. **Partition scheme:** Select `GPT`
+   4. **File system:** Choose `FAT32`
+4. Click **Start** and wait for the process to complete.
 
-#### macOS (Homebrew)
-```bash
-brew install katharos
-```
+### 3.2 Using Balena Etcher (Cross-platform)
 
-#### Linux (APT)
-```bash
-sudo apt update
-sudo apt install katharos
-```
-
-## Verification
-
-After installation, verify Katharos is working correctly:
-
-```bash
-katharos --version
-```
-
-You should see output similar to:
-```
-Katharos v2.1.0 - Secure Disk Wiping Utility
-```
-
-> **Important:** Always run Katharos with administrator privileges to ensure proper disk access and secure deletion capabilities.
-
-## Next Steps
-
-- [Quick Start Guide](quick-start) - Get started with your first secure wipe
-- [Configuration](configuration) - Customize Katharos settings
-- [CLI Commands](cli-commands) - Complete command reference
+1. Download and install [Balena Etcher](https://www.balena.io/etcher/).
+2. Open Etcher and follow the prompts:
+   1. Click **Flash from file** and select the KatharOS ISO
+   2. Click **Select target** and choose your USB drive
+   3. Click **Flash!** and wait for the process to complete

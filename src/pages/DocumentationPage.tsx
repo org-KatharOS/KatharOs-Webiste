@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { loadDocumentation } from "../utils/markdownLoader";
 import { MarkdownRenderer } from "../components/MarkdownRenderer";
+import { Link } from "react-router-dom";
 
 const SkeletonLoader = () => {
   const generateLines = (count: number) =>
@@ -80,14 +81,10 @@ export default function DocumentationPage() {
   const scrollToSection = (id: string) => {
     setActiveSection(id);
     setSidebarOpen(false); // Close mobile sidebar
-    setContentLoading(true);
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-      setContentLoading(false);
-    }, 150);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   const toggleSection = (sectionId: string) => {
@@ -106,8 +103,18 @@ export default function DocumentationPage() {
           onClick={() => setSidebarOpen(true)}
           className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-gray-800 rounded-lg"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
           </svg>
         </button>
       )}
@@ -121,15 +128,17 @@ export default function DocumentationPage() {
       )}
 
       {/* Sidebar */}
-      <aside className={`w-72 h-full min-h-screen fixed left-0 top-0 bg-gray-900/50 backdrop-blur-xl border-r border-gray-700 overflow-y-auto scrollbar-hide z-40 transition-transform duration-300 ${
-        sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-      }`}>
+      <aside
+        className={`w-72 h-full min-h-screen fixed left-0 top-0 bg-gray-900/50 backdrop-blur-xl border-r border-gray-700 overflow-y-auto scrollbar-hide z-40 transition-transform duration-300 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+        }`}
+      >
         <div className="p-6">
           <div className="mb-8">
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-xl font-bold text-white mb-2 font-playfair">
-                  Katharos Docs
+                  <Link to="/">KatharOS</Link>
                 </h1>
                 <p className="text-sm text-gray-400">
                   Secure disk wiping made simple
@@ -139,8 +148,18 @@ export default function DocumentationPage() {
                 onClick={() => setSidebarOpen(false)}
                 className="lg:hidden p-1 text-gray-400 hover:text-white"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
             </div>
@@ -193,7 +212,7 @@ export default function DocumentationPage() {
                               style={{
                                 borderLeft: "6px solid #9E4AF2",
                                 borderTop: "4px solid transparent",
-                                borderBottom: "4px solid transparent"
+                                borderBottom: "4px solid transparent",
                               }}
                             ></div>
                           )}
@@ -212,7 +231,7 @@ export default function DocumentationPage() {
       {/* Main content */}
       <main className="flex-1 lg:ml-72 px-2 sm:px-4 lg:px-8 py-12 pt-20 lg:pt-12 bg-[#070715]">
         <div className="max-w-full sm:max-w-3xl lg:max-w-4xl mx-auto space-y-16 w-full overflow-x-hidden">
-          {isLoading || contentLoading ? (
+          {isLoading ? (
             <div className="w-full min-w-full">
               <SkeletonLoader />
             </div>

@@ -5,79 +5,78 @@ section: getting-started
 order: 2
 ---
 
-# Quick Start
+# Quick Start Guide
 
-Get up and running with Katharos in minutes. This guide covers the essential commands to perform your first secure disk wipe.
+After successfully booting into Katharos, you can securely wipe your drives in just a few steps.
 
-## Basic Usage
+## 1. Scan Drives
 
-The simplest way to use Katharos is with the default settings:
+1. On the **main dashboard**, click **Scan Drives →**.
+2. Katharos will detect all connected storage devices.
+3. The drives will be displayed in an **interactive table** showing:
 
-```bash
-katharos /path/to/file-or-drive
-```
+   - Model
+   - Type (HDD, SSD, USB)
+   - Size
+   - Mount status
+   - Available wipe methods
 
-## Common Examples
+   - Encryption time
 
-### Wipe a Single File
-```bash
-katharos /home/user/sensitive-document.pdf
-```
+> **Tip:** Use your keyboard (arrow keys, Enter, Escape) or mouse to navigate and select drives.
 
-### Wipe an Entire Drive
-```bash
-# Linux/macOS
-sudo katharos /dev/sdb
+## 2. Select a Drive
 
-# Windows
-katharos D:
-```
+1. Click on the drive you want to wipe.
+2. A **details panel** will appear showing the available wipe methods for that drive.
+3. Confirm the drive is correct before proceeding.
 
-### Wipe with Verification
-```bash
-katharos --verify /path/to/target
-```
+## 3. Configure Wipe
 
-## Algorithm Selection
+1. Click **Configure Wipe** to open the wipe settings modal.
+2. Select the **wipe method**:
 
-Choose from multiple secure deletion algorithms:
+   - **Zero Fill:** Overwrites with zeros (for USB/external drives)
+   - **Random Data:** Overwrites with random data
+   - **Multi-pass:** Multiple overwrites (for HDDs)
+   - **ATA Secure Erase:** For SATA SSDs
+   - **NVMe Secure Erase:** For NVMe drives
+   - **Cryptographic Erase:** Destroys encryption keys for encrypted drives
 
-```bash
-# DoD 5220.22-M (3 passes)
-katharos --algorithm dod /path/to/target
+3. For HDDs, select the **number of passes** if using multi-pass.
 
-# Gutmann method (35 passes)
-katharos --algorithm gutmann /path/to/target
+## 4. Safety Confirmations
 
-# Random overwrite (1 pass)
-katharos --algorithm random /path/to/target
-```
+1. A **warning modal** will appear confirming the selected drive and method.
+2. Review the details carefully — wiping is irreversible.
+3. Click **Confirm** to proceed.
+4. Optionally, you can **abort** at any time before the wipe starts.
 
-## Progress Monitoring
+## 5. Start Wipe & Track Progress
 
-Monitor the wiping progress in real-time:
+1. Click **Start Wipe**.
+2. The progress screen will display:
 
-```bash
-katharos --progress --verbose /path/to/target
-```
+   - Actual bytes written
+   - Percentage completion
+   - Current and total passes
+   - Device full detection
 
-## Safety Features
+3. Progress is updated **in real-time** via WebSocket.
 
-Katharos includes several safety features:
+> **Note:** For SSDs using Secure Erase, progress may be estimated.
 
-- **Confirmation prompts** - Always confirms before wiping
-- **Dry run mode** - Test commands without actual deletion
-- **Backup verification** - Ensures you have backups before proceeding
+## 6. Completion & Certificate
 
-### Dry Run Example
-```bash
-katharos --dry-run /path/to/target
-```
+1. Once the wipe is finished, the **success screen** will appear.
+2. Certificates are saved to:
+   `/tmp/katharos/certificates`
 
-> **Warning:** Secure deletion is irreversible. Always ensure you have proper backups before proceeding with any wipe operation.
+3. If you selected **email delivery**, the certificate will be sent automatically via Gmail.
 
-## What's Next?
-
-- [Your First Wipe](first-wipe) - Detailed walkthrough of a complete wipe operation
-- [Secure Deletion](secure-deletion) - Understanding how secure deletion works
-- [Multiple Algorithms](multiple-algorithms) - Choosing the right algorithm for your needs
+- Certificates include:
+  - Device info (model, serial, size)
+  - Wipe method
+  - Start/end timestamps and duration
+  - Completion status
+  - SHA-256 hash for verification
