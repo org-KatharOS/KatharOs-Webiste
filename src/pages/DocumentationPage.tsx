@@ -52,7 +52,9 @@ export default function DocumentationPage() {
   ]);
   const [contentLoading, setContentLoading] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  useEffect(() => {
+    setContentLoading(false);
+  }, []);
   useEffect(() => {
     const handleScroll = () => {
       if (isLoading || contentLoading) return;

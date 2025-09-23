@@ -74,7 +74,9 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             {children}
           </p>
         ),
-        code: ({ node, inline, className, children, ...props }) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        code: (props: any) => {
+          const { inline, className, children, ...restProps } = props;
           const match = /language-(\w+)/.exec(className || '');
           const language = match ? match[1] : undefined;
           
@@ -83,7 +85,7 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
           }
           
           return (
-            <code className="bg-gray-800 text-green-400 px-1 sm:px-2 py-1 rounded text-xs sm:text-sm" {...props}>
+            <code className="bg-gray-800 text-green-400 px-1 sm:px-2 py-1 rounded text-xs sm:text-sm" {...restProps}>
               {children}
             </code>
           );

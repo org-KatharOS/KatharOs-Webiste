@@ -1,5 +1,6 @@
 import React from "react";
 import LightRays from "./Backgrounds/LightRays";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -21,15 +22,15 @@ function Footer() {
           <div className="max-w-7xl mx-auto px-4 md:px-8 w-full py-4 md:py-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 text-white">
               <div className="lg:col-span-1 text-center md:text-left">
-                <h3 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                <Link to="/" className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                   KatharOS
-                </h3>
+                </Link>
                 <p className="text-sm md:text-lg text-gray-300 mb-2 md:mb-4 leading-relaxed">
                   Securely wipe your disk with military-grade encryption and
                   advanced algorithms.
                 </p>
                 <p className="text-xs md:text-sm text-gray-400">
-                  © 2024 All rights reserved.
+                  © 2025 All rights reserved.
                 </p>
               </div>
 
@@ -40,7 +41,7 @@ function Footer() {
                 <ul className="space-y-1 md:space-y-3">
                   <li>
                     <a
-                      href="#"
+                      href=""
                       className="text-gray-300 hover:text-purple-300 transition-colors duration-200 text-sm md:text-base"
                     >
                       Home
@@ -48,7 +49,7 @@ function Footer() {
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="/about"
                       className="text-gray-300 hover:text-purple-300 transition-colors duration-200 text-sm md:text-base"
                     >
                       About

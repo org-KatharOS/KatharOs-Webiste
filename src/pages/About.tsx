@@ -1,11 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import CountUp from "react-countup";
 import { TypeAnimation } from "react-type-animation";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Tabs from "@radix-ui/react-tabs";
-import * as Progress from "@radix-ui/react-progress";
 import {
   Shield,
   Zap,
@@ -18,23 +16,17 @@ import {
   HardDrive,
   Lock,
   Globe,
-  Users,
   Award,
   Eye,
-  Layers,
   Settings,
   Play,
   X,
   ChevronRight,
   Star,
-  Database,
   Wifi,
-  Terminal,
   Code,
-  Smartphone,
   Laptop,
   Activity,
-  BarChart3,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -52,6 +44,9 @@ const About = () => {
   });
 
   useEffect(() => {
+    if (statsRef || progress) {
+      //do nothing
+    }
     if (statsInView) {
       const timer = setTimeout(() => setProgress(85), 500);
       return () => clearTimeout(timer);
@@ -77,7 +72,7 @@ const About = () => {
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: [0.25, 0.46, 0.45, 0.94] as const,
       },
     },
   };
@@ -89,37 +84,12 @@ const About = () => {
       transition: {
         duration: 6,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
   };
 
-  const stats = [
-    {
-      label: "Devices Secured",
-      value: 50000,
-      suffix: "+",
-      icon: <Shield className="w-6 h-6" />,
-    },
-    {
-      label: "Data Wiped",
-      value: 2.5,
-      suffix: "PB",
-      icon: <Database className="w-6 h-6" />,
-    },
-    {
-      label: "Success Rate",
-      value: 99.9,
-      suffix: "%",
-      icon: <CheckCircle className="w-6 h-6" />,
-    },
-    {
-      label: "Organizations",
-      value: 500,
-      suffix: "+",
-      icon: <Users className="w-6 h-6" />,
-    },
-  ];
+
 
   const demoSlides = [
     {
@@ -437,7 +407,7 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#070715] text-white overflow-x-hidden">
+    <div className="w-[100vw] min-h-screen bg-[#070715] text-white overflow-x-hidden">
       {/* Floating Background Elements */}
       <div className="fixed inset-0 pointer-events-none">
         <motion.div
@@ -1081,7 +1051,7 @@ const About = () => {
         variants={containerVariants}
       >
         <div className="max-w-6xl mx-auto w-full">
-          <div variants={itemVariants} className="text-center mb-12">
+          <motion.div variants={itemVariants} className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-playfair mb-6">
               Implementation Details
             </h2>
@@ -1089,12 +1059,12 @@ const About = () => {
             <p className="text-xl text-gray-300">
               Current Status & Technical Architecture
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 mb-12">
             {/* Backend Engine */}
             <div
-              variants={itemVariants}
+              
               className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300"
             >
               <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
@@ -1123,7 +1093,7 @@ const About = () => {
 
             {/* Certificate System */}
             <div
-              variants={itemVariants}
+              
               className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300"
             >
               <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
@@ -1152,7 +1122,7 @@ const About = () => {
 
             {/* Wipe Methods */}
             <div
-              variants={itemVariants}
+              
               className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300"
             >
               <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
@@ -1181,7 +1151,7 @@ const About = () => {
 
             {/* Safety Features */}
             <div
-              variants={itemVariants}
+              
               className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300"
             >
               <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
@@ -1211,7 +1181,7 @@ const About = () => {
 
           {/* Frontend Integration */}
           <div
-            variants={itemVariants}
+            
             className="bg-gradient-to-r from-[#422A83]/20 to-[#9E4AF2]/20 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8 mb-12"
           >
             <h3 className="text-2xl font-semibold text-white mb-6 flex items-center">
@@ -1246,7 +1216,7 @@ const About = () => {
 
           {/* Deployment & Distribution */}
           <div
-            variants={itemVariants}
+            
             className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8"
           >
             <h3 className="text-2xl font-semibold text-white mb-6 flex items-center">
@@ -1301,7 +1271,7 @@ const About = () => {
         variants={containerVariants}
       >
         <div className="max-w-6xl mx-auto w-full">
-          <div variants={itemVariants} className="text-center mb-12">
+          <div  className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-playfair mb-6">
               How Katharos Is Different
             </h2>
@@ -1310,7 +1280,7 @@ const About = () => {
           </div>
 
           <div className="overflow-x-auto">
-            <div className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-4 sm:p-6 lg:p-8">
+            <div className=" bg-gray-900/50 min-w-max backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-4 sm:p-6 lg:p-8">
               <table className="w-full min-w-[600px] sm:min-w-[800px]">
                 <thead className="">
                   <tr className="border-b border-gray-700">
@@ -1430,7 +1400,7 @@ const About = () => {
             </div>
           </div>
 
-          <div variants={itemVariants} className="mt-8 text-center">
+          <div  className="mt-8 text-center">
             <div className="bg-gradient-to-r from-[#422A83]/20 to-[#9E4AF2]/20 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8">
               <p className="text-lg text-gray-300 leading-relaxed">
                 <span className="text-[#b19eef] font-semibold">

@@ -60,7 +60,6 @@ function ThirdPage() {
           >
             <Cards
               imageSrc={card.imgSrc}
-              altText="Tilted card image"
               containerHeight="300px"
               containerWidth="300px"
               imageHeight="300px"
@@ -87,7 +86,6 @@ function ThirdPage() {
           >
             <Cards
               imageSrc={card.imgSrc}
-              altText="Tilted card image"
               containerHeight="300px"
               containerWidth="300px"
               imageHeight="300px"

@@ -1,4 +1,3 @@
-import LandingPage from "./pages/LandingPage";
 import { Routers } from "./Routes/Routers";
 function App() {
   return (
