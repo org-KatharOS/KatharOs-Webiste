@@ -29,6 +29,8 @@ import {
   Activity,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 const About = () => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -88,8 +90,6 @@ const About = () => {
       },
     },
   };
-
-
 
   const demoSlides = [
     {
@@ -407,464 +407,444 @@ const About = () => {
   ];
 
   return (
-    <div className="w-[100vw] min-h-screen bg-[#070715] text-white overflow-x-hidden">
-      {/* Floating Background Elements */}
-      <div className="fixed inset-0 pointer-events-none">
-        <motion.div
-          className="absolute top-20 left-10 w-32 h-32 bg-[#9E4AF2]/10 rounded-full blur-xl"
-          variants={floatingVariants}
-          animate="animate"
-        />
-        <motion.div
-          className="absolute top-40 right-20 w-24 h-24 bg-[#b19eef]/10 rounded-full blur-xl"
-          variants={floatingVariants}
-          animate="animate"
-          transition={{ delay: 2 }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-1/3 w-40 h-40 bg-[#422A83]/10 rounded-full blur-xl"
-          variants={floatingVariants}
-          animate="animate"
-          transition={{ delay: 4 }}
-        />
-      </div>
+    <div className="h-full w-full flex flex-col gap-4 md:gap-[0vh]">
+      <NavBar />
+      <div className="w-[100vw] min-h-screen bg-[#070715] text-white overflow-x-hidden">
+        {/* Floating Background Elements */}
+        <div className="fixed inset-0 pointer-events-none">
+          <motion.div
+            className="absolute top-20 left-10 w-32 h-32 bg-[#9E4AF2]/10 rounded-full blur-xl"
+            variants={floatingVariants}
+            animate="animate"
+          />
+          <motion.div
+            className="absolute top-40 right-20 w-24 h-24 bg-[#b19eef]/10 rounded-full blur-xl"
+            variants={floatingVariants}
+            animate="animate"
+            transition={{ delay: 2 }}
+          />
+          <motion.div
+            className="absolute bottom-20 left-1/3 w-40 h-40 bg-[#422A83]/10 rounded-full blur-xl"
+            variants={floatingVariants}
+            animate="animate"
+            transition={{ delay: 4 }}
+          />
+        </div>
 
-      {/* Hero Section with Interactive Elements */}
-      <motion.section
-        ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
-        initial="hidden"
-        animate={heroInView ? "visible" : "hidden"}
-        variants={containerVariants}
-      >
-        <div className="max-w-7xl mx-auto w-full">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <motion.div
-              variants={itemVariants}
-              className="text-center lg:text-left"
-            >
+        {/* Hero Section with Interactive Elements */}
+        <motion.section
+          ref={heroRef}
+          className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
+          initial="hidden"
+          animate={heroInView ? "visible" : "hidden"}
+          variants={containerVariants}
+        >
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <motion.div
-                className="inline-block mb-6"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                variants={itemVariants}
+                className="text-center lg:text-left"
               >
-                <Link
-                  to="/"
-                  className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-playfair mb-4 bg-gradient-to-r from-[#9E4AF2] via-[#b19eef] to-[#422A83] bg-clip-text text-transparent"
+                <motion.div
+                  className="inline-block mb-6"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
-                  Katharos
-                </Link>
-                <div className="w-32 h-1 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] mx-auto lg:mx-0 mb-6"></div>
-              </motion.div>
+                  <Link
+                    to="/"
+                    className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-playfair mb-4 bg-gradient-to-r from-[#9E4AF2] via-[#b19eef] to-[#422A83] bg-clip-text text-transparent"
+                  >
+                    Katharos
+                  </Link>
+                  <div className="w-32 h-1 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] mx-auto lg:mx-0 mb-6"></div>
+                </motion.div>
 
-              <TypeAnimation
-                sequence={[
-                  "Secure Data Sanitization",
-                  2000,
-                  "Bootable ISO Solution",
-                  2000,
-                  "Enterprise-Grade Security",
-                  2000,
-                  "Tamper-Proof Certificates",
-                  2000,
-                ]}
-                wrapper="h2"
-                className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#b19eef] mb-6 font-medium"
-                repeat={Infinity}
-              />
+                <TypeAnimation
+                  sequence={[
+                    "Secure Data Sanitization",
+                    2000,
+                    "Bootable ISO Solution",
+                    2000,
+                    "Enterprise-Grade Security",
+                    2000,
+                    "Tamper-Proof Certificates",
+                    2000,
+                  ]}
+                  wrapper="h2"
+                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#b19eef] mb-6 font-medium"
+                  repeat={Infinity}
+                />
 
-              <motion.p
-                variants={itemVariants}
-                className="text-sm sm:text-base lg:text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-8"
-              >
-                A revolutionary secure data-sanitization solution distributed as
-                a bootable custom Debian ISO, designed to help individuals,
-                businesses and recyclers safely dispose or resale IT assets
-                without fear of data recovery.
-              </motion.p>
+                <motion.p
+                  variants={itemVariants}
+                  className="text-sm sm:text-base lg:text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-8"
+                >
+                  A revolutionary secure data-sanitization solution distributed
+                  as a bootable custom Debian ISO, designed to help individuals,
+                  businesses and recyclers safely dispose or resale IT assets
+                  without fear of data recovery.
+                </motion.p>
 
-              <motion.div
-                variants={itemVariants}
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-              >
-                <Dialog.Root open={isModalOpen} onOpenChange={setIsModalOpen}>
-                  <Dialog.Trigger asChild>
-                    <motion.button
-                      className="group relative px-8 py-4 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] rounded-xl font-semibold overflow-hidden"
-                      whileHover={{
-                        scale: 1.05,
-                        boxShadow: "0 20px 40px rgba(158, 74, 242, 0.3)",
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <span className="relative z-10 flex items-center">
-                        <Play className="w-5 h-5 mr-2" />
-                        Watch Demo
-                      </span>
-                      <motion.div
-                        className="absolute inset-0 bg-white/20"
-                        initial={{ x: "-100%" }}
-                        whileHover={{ x: "100%" }}
-                        transition={{ duration: 0.6 }}
-                      />
-                    </motion.button>
-                  </Dialog.Trigger>
+                <motion.div
+                  variants={itemVariants}
+                  className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                >
+                  <Dialog.Root open={isModalOpen} onOpenChange={setIsModalOpen}>
+                    <Dialog.Trigger asChild>
+                      <motion.button
+                        className="group relative px-8 py-4 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] rounded-xl font-semibold overflow-hidden"
+                        whileHover={{
+                          scale: 1.05,
+                          boxShadow: "0 20px 40px rgba(158, 74, 242, 0.3)",
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <span className="relative z-10 flex items-center">
+                          <Play className="w-5 h-5 mr-2 " />
+                          Watch Demo
+                        </span>
+                        <motion.div
+                          className="absolute inset-0 bg-white/20"
+                          initial={{ x: "-100%" }}
+                          whileHover={{ x: "100%" }}
+                          transition={{ duration: 0.6 }}
+                        />
+                      </motion.button>
+                    </Dialog.Trigger>
 
-                  <Dialog.Portal>
-                    <Dialog.Overlay className="fixed inset-0 bg-black/80 backdrop-blur-sm" />
-                    <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-4xl bg-gray-900/95 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8">
-                      <Dialog.Title className="text-2xl font-bold mb-6 text-center">
-                        Katharos Demo
-                      </Dialog.Title>
+                    <Dialog.Portal>
+                      <Dialog.Overlay className="fixed inset-0 bg-black/80 backdrop-blur-sm" />
+                      <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-4xl bg-gray-900/95 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8">
+                        <Dialog.Title className="text-2xl font-bold mt-8 mb-6 text-center">
+                          Katharos Demo
+                        </Dialog.Title>
 
-                      <div className="relative">
-                        <div className="bg-black/50 rounded-xl p-6 mb-6">
-                          <div className="aspect-video bg-gradient-to-br from-[#422A83]/20 to-[#9E4AF2]/20 rounded-lg flex items-center justify-center">
-                            <div className="text-center">
-                              <Play className="w-16 h-16 text-[#9E4AF2] mx-auto mb-4" />
-                              <h3 className="text-xl font-semibold mb-2">
-                                {demoSlides[currentSlide].title}
-                              </h3>
-                              <p className="text-gray-300 mb-4">
-                                {demoSlides[currentSlide].description}
-                              </p>
-                              <div className="flex gap-2 justify-center">
-                                {demoSlides[currentSlide].tech.map(
-                                  (tech, i) => (
-                                    <span
-                                      key={i}
-                                      className="px-3 py-1 bg-[#9E4AF2]/20 rounded-full text-sm"
-                                    >
-                                      {tech}
-                                    </span>
-                                  )
-                                )}
-                              </div>
+                        <div className="relative">
+                          <div className="bg-black/50 rounded-xl p-6 mb-6">
+                            <div className="aspect-video bg-gradient-to-br from-[#422A83]/20 to-[#9E4AF2]/20 rounded-lg flex items-center justify-center">
+                              <Play className="w-16 h-16 text-[#9E4AF2]" />
                             </div>
                           </div>
-                        </div>
 
-                        <div className="flex justify-center gap-2 mb-4">
-                          {demoSlides.map((_, i) => (
-                            <button
-                              key={i}
-                              onClick={() => setCurrentSlide(i)}
-                              className={`w-3 h-3 rounded-full transition-all ${
-                                i === currentSlide
-                                  ? "bg-[#9E4AF2]"
-                                  : "bg-gray-600"
-                              }`}
-                            />
-                          ))}
-                        </div>
-                      </div>
-
-                      <Dialog.Close asChild>
-                        <button className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-lg transition-colors">
-                          <X className="w-5 h-5" />
-                        </button>
-                      </Dialog.Close>
-                    </Dialog.Content>
-                  </Dialog.Portal>
-                </Dialog.Root>
-
-                <motion.button
-                  className="rainbow-border px-8 py-4 bg-white/5 backdrop-blur-xl font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Download ISO
-                </motion.button>
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="relative ">
-              <div className="relative bg-gradient-to-br from-[#422A83]/20 to-[#9E4AF2]/20 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#9E4AF2]/5 to-[#b19eef]/5 rounded-2xl" />
-                <div className="relative">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    </div>
-                    <span className="text-sm text-gray-400">
-                      katharos-terminal
-                    </span>
-                  </div>
-
-                  <div className="space-y-3 font-mono text-sm">
-                    <div className="flex items-center">
-                      <span className="text-[#9E4AF2] mr-2">$</span>
-                      <TypeAnimation
-                        sequence={[
-                          "sudo katharos --scan-drives",
-                          1000,
-                          "sudo katharos --scan-drives\n> Detected 3 storage devices",
-                          2000,
-                          "sudo katharos --scan-drives\n> Detected 3 storage devices\n> /dev/sda: 500GB SSD (SATA)",
-                          1000,
-                        ]}
-                        wrapper="span"
-                        className="text-green-400"
-                        cursor={true}
-                        repeat={Infinity}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Interactive Timeline */}
-      <motion.section
-        ref={timelineRef}
-        className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8"
-        initial="hidden"
-        animate={timelineInView ? "visible" : "hidden"}
-        variants={containerVariants}
-      >
-        <div className="max-w-6xl mx-auto w-full">
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-playfair mb-6">
-              How Katharos Works
-            </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] mx-auto"></div>
-          </motion.div>
-
-          <div className="relative">
-            <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#9E4AF2] to-[#b19eef] hidden sm:block"></div>
-
-            {timelineSteps.map((item, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="relative mb-6 sm:mb-8 last:mb-0"
-              >
-                <div className="flex items-start">
-                  <motion.div
-                    className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] rounded-full flex items-center justify-center text-white font-bold mr-4 sm:mr-8 relative z-10 text-sm sm:text-base"
-                    whileHover={{ scale: 1.1, rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {item.step}
-                  </motion.div>
-
-                  <motion.div className="flex-1 min-w-0">
-                    <motion.button
-                      onClick={() =>
-                        setExpandedStep(expandedStep === index ? -1 : index)
-                      }
-                      className="w-full bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300 text-left"
-                      whileHover={{ scale: 1.02, x: 10 }}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                          <span className="text-[#9E4AF2] mr-2 sm:mr-3">
-                            {item.icon}
-                          </span>
-                          <h3 className="text-lg sm:text-xl font-semibold">
-                            {item.title}
-                          </h3>
-                        </div>
-                        <motion.div
-                          animate={{ rotate: expandedStep === index ? 90 : 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <ChevronRight className="w-5 h-5 text-[#9E4AF2]" />
-                        </motion.div>
-                      </div>
-                      <p className="text-gray-300 mt-2">{item.userFlow}</p>
-                    </motion.button>
-
-                    <AnimatePresence>
-                      {expandedStep === index && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="mt-4 bg-gray-800/50 backdrop-blur-xl border border-[#9E4AF2]/20 rounded-xl p-6"
-                        >
-                          <div className="grid md:grid-cols-2 gap-6">
-                            <div>
-                              <h4 className="text-lg font-semibold text-[#b19eef] mb-3">
-                                Behind the Scenes
-                              </h4>
-                              <ul className="space-y-2 text-gray-300 text-sm">
-                                {item.behindScenes.map((point, i) => (
-                                  <li key={i} className="flex items-start">
-                                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                                    {point}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div>
-                              <h4 className="text-lg font-semibold text-[#b19eef] mb-3">
-                                Tech Stack
-                              </h4>
-                              <div className="flex flex-wrap gap-2">
-                                {item.techStack.map((tech, i) => (
+                          <div className="text-center mb-6">
+                            <h3 className="text-xl font-semibold mb-2">
+                              {demoSlides[currentSlide].title}
+                            </h3>
+                            <p className="text-gray-300 mb-4">
+                              {demoSlides[currentSlide].description}
+                            </p>
+                            <div className="flex gap-2 justify-center">
+                              {demoSlides[currentSlide].tech.map(
+                                (tech, i) => (
                                   <span
                                     key={i}
-                                    className="px-3 py-1 bg-[#9E4AF2]/20 text-[#9E4AF2] rounded-full text-sm border border-[#9E4AF2]/30"
+                                    className="px-3 py-1 bg-[#9E4AF2]/20 rounded-full text-sm"
                                   >
                                     {tech}
                                   </span>
-                                ))}
-                              </div>
+                                )
+                              )}
                             </div>
                           </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
+
+                          <div className="flex justify-center gap-2 mb-4">
+                            {demoSlides.map((_, i) => (
+                              <button
+                                key={i}
+                                onClick={() => setCurrentSlide(i)}
+                                className={`w-3 h-3 rounded-full transition-all ${
+                                  i === currentSlide
+                                    ? "bg-[#9E4AF2]"
+                                    : "bg-gray-600"
+                                }`}
+                              />
+                            ))}
+                          </div>
+                        </div>
+
+                        <Dialog.Close asChild>
+                          <button className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-lg transition-colors">
+                            <X className="w-5 h-5" />
+                          </button>
+                        </Dialog.Close>
+                      </Dialog.Content>
+                    </Dialog.Portal>
+                  </Dialog.Root>
+
+                  {/* <motion.button
+                    className="rainbow-border px-8 py-4 bg-white/5 backdrop-blur-xl font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Download ISO
+                  </motion.button> */}
+                </motion.div>
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="relative ">
+                <div className="relative bg-gradient-to-br from-[#422A83]/20 to-[#9E4AF2]/20 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#9E4AF2]/5 to-[#b19eef]/5 rounded-2xl" />
+                  <div className="relative">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      </div>
+                      <span className="text-sm text-gray-400">
+                        katharos-terminal
+                      </span>
+                    </div>
+
+                    <div className="space-y-3 font-mono text-sm">
+                      <div className="flex items-center">
+                        <span className="text-[#9E4AF2] mr-2">$</span>
+                        <TypeAnimation
+                          sequence={[
+                            "sudo katharos --scan-drives",
+                            1000,
+                            "sudo katharos --scan-drives\n> Detected 3 storage devices",
+                            2000,
+                            "sudo katharos --scan-drives\n> Detected 3 storage devices\n> /dev/sda: 500GB SSD (SATA)",
+                            1000,
+                          ]}
+                          wrapper="span"
+                          className="text-green-400"
+                          cursor={true}
+                          repeat={Infinity}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
-            ))}
+            </div>
           </div>
-        </div>
-      </motion.section>
+        </motion.section>
 
-      {/* Interactive Tabs Section */}
-      <motion.section
-        className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#422A83]/10 to-transparent"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-      >
-        <div className="max-w-6xl mx-auto w-full">
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-playfair mb-6">
-              Explore Katharos
-            </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] mx-auto"></div>
-          </motion.div>
+        {/* Interactive Timeline */}
+        <motion.section
+          ref={timelineRef}
+          className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8"
+          initial="hidden"
+          animate={timelineInView ? "visible" : "hidden"}
+          variants={containerVariants}
+        >
+          <div className="max-w-6xl mx-auto w-full">
+            <motion.div variants={itemVariants} className="text-center mb-12">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-playfair mb-6">
+                How Katharos Works
+              </h2>
+              <div className="w-16 h-1 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] mx-auto"></div>
+            </motion.div>
 
-          <Tabs.Root
-            value={activeTab}
-            onValueChange={setActiveTab}
-            className="w-full"
-          >
-            <Tabs.List className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-xl p-2">
-              {[
-                {
-                  id: "overview",
-                  label: "Overview",
-                  icon: <Eye className="w-4 h-4" />,
-                },
-                {
-                  id: "features",
-                  label: "Features",
-                  icon: <Star className="w-4 h-4" />,
-                },
-                {
-                  id: "wiping",
-                  label: "Wiping",
-                  icon: <HardDrive className="w-4 h-4" />,
-                },
-                {
-                  id: "tech",
-                  label: "Tech",
-                  icon: <Code className="w-4 h-4" />,
-                },
-                {
-                  id: "security",
-                  label: "Security",
-                  icon: <Shield className="w-4 h-4" />,
-                },
-              ].map((tab) => (
-                <Tabs.Trigger
-                  key={tab.id}
-                  value={tab.id}
-                  className={`flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-3 rounded-lg font-medium transition-all duration-300 text-xs sm:text-sm ${
-                    activeTab === tab.id
-                      ? "bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] text-white shadow-lg"
-                      : "text-gray-400 hover:text-white hover:bg-white/5"
-                  }`}
+            <div className="relative">
+              <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#9E4AF2] to-[#b19eef] hidden sm:block"></div>
+
+              {timelineSteps.map((item, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="relative mb-6 sm:mb-8 last:mb-0"
                 >
-                  {tab.icon}
-                  <span className="hidden sm:inline lg:inline">
-                    {tab.label}
-                  </span>
-                </Tabs.Trigger>
-              ))}
-            </Tabs.List>
+                  <div className="flex items-start">
+                    <motion.div
+                      className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] rounded-full flex items-center justify-center text-white font-bold mr-4 sm:mr-8 relative z-10 text-sm sm:text-base"
+                      whileHover={{ scale: 1.1, rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      {item.step}
+                    </motion.div>
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="mt-8"
-              >
-                <Tabs.Content value="overview" className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8">
-                      <h3 className="text-2xl font-semibold mb-4 flex items-center">
-                        <Monitor className="w-8 h-8 text-[#9E4AF2] mr-3" />
-                        What is Katharos?
-                      </h3>
-                      <p className="text-gray-300 leading-relaxed">
-                        Katharos is a secure data-sanitization solution
-                        distributed as a bootable custom Debian ISO containing
-                        an Electron application with React + TypeScript for a
-                        responsive, user-friendly interface, Python backend
-                        engine with WebSocket-based real-time communication, and
-                        multiple wiping methods.
-                      </p>
-                    </div>
-                    <div className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8">
-                      <h3 className="text-2xl font-semibold mb-4 flex items-center">
-                        <Globe className="w-8 h-8 text-[#9E4AF2] mr-3" />
-                        Why Katharos?
-                      </h3>
-                      <p className="text-gray-300 leading-relaxed">
-                        Millions of devices are hoarded because users fear data
-                        breaches from discarded drives. Existing tools are
-                        complex or lack tamper-proof certificates. Katharos
-                        makes secure wiping accessible, auditable, and
-                        trustworthy.
-                      </p>
-                    </div>
-                  </div>
-                </Tabs.Content>
-
-                <Tabs.Content value="features">
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    {features.map((feature, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300 group hover:scale-105"
+                    <motion.div className="flex-1 min-w-0">
+                      <motion.button
+                        onClick={() =>
+                          setExpandedStep(expandedStep === index ? -1 : index)
+                        }
+                        className="w-full bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300 text-left"
+                        whileHover={{ scale: 1.02, x: 10 }}
                       >
-                        <div className="text-[#9E4AF2] mb-4 group-hover:scale-110 transition-transform duration-300">
-                          {feature.icon}
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center">
+                            <span className="text-[#9E4AF2] mr-2 sm:mr-3">
+                              {item.icon}
+                            </span>
+                            <h3 className="text-lg sm:text-xl font-semibold">
+                              {item.title}
+                            </h3>
+                          </div>
+                          <motion.div
+                            animate={{
+                              rotate: expandedStep === index ? 90 : 0,
+                            }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <ChevronRight className="w-5 h-5 text-[#9E4AF2]" />
+                          </motion.div>
                         </div>
-                        <h3 className="text-lg font-semibold mb-3">
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-300 text-sm">
-                          {feature.description}
-                        </p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </Tabs.Content>
+                        <p className="text-gray-300 mt-2">{item.userFlow}</p>
+                      </motion.button>
 
-                <Tabs.Content value="wiping">
-                  <div className="space-y-8">
+                      <AnimatePresence>
+                        {expandedStep === index && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="mt-4 bg-gray-800/50 backdrop-blur-xl border border-[#9E4AF2]/20 rounded-xl p-6"
+                          >
+                            <div className="grid md:grid-cols-2 gap-6">
+                              <div>
+                                <h4 className="text-lg font-semibold text-[#b19eef] mb-3">
+                                  Behind the Scenes
+                                </h4>
+                                <ul className="space-y-2 text-gray-300 text-sm">
+                                  {item.behindScenes.map((point, i) => (
+                                    <li key={i} className="flex items-start">
+                                      <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                                      {point}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-semibold text-[#b19eef] mb-3">
+                                  Tech Stack
+                                </h4>
+                                <div className="flex flex-wrap gap-2">
+                                  {item.techStack.map((tech, i) => (
+                                    <span
+                                      key={i}
+                                      className="px-3 py-1 bg-[#9E4AF2]/20 text-[#9E4AF2] rounded-full text-sm border border-[#9E4AF2]/30"
+                                    >
+                                      {tech}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Interactive Tabs Section */}
+        <motion.section
+          className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#422A83]/10 to-transparent"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+        >
+          <div className="max-w-6xl mx-auto w-full">
+            <motion.div variants={itemVariants} className="text-center mb-12">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-playfair mb-6">
+                Explore Katharos
+              </h2>
+              <div className="w-16 h-1 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] mx-auto"></div>
+            </motion.div>
+
+            <Tabs.Root
+              value={activeTab}
+              onValueChange={setActiveTab}
+              className="w-full"
+            >
+              <Tabs.List className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-xl p-2">
+                {[
+                  {
+                    id: "overview",
+                    label: "Overview",
+                    icon: <Eye className="w-4 h-4" />,
+                  },
+                  {
+                    id: "features",
+                    label: "Features",
+                    icon: <Star className="w-4 h-4" />,
+                  },
+                  {
+                    id: "wiping",
+                    label: "Wiping",
+                    icon: <HardDrive className="w-4 h-4" />,
+                  },
+                  {
+                    id: "tech",
+                    label: "Tech",
+                    icon: <Code className="w-4 h-4" />,
+                  },
+                  {
+                    id: "security",
+                    label: "Security",
+                    icon: <Shield className="w-4 h-4" />,
+                  },
+                ].map((tab) => (
+                  <Tabs.Trigger
+                    key={tab.id}
+                    value={tab.id}
+                    className={`flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-3 rounded-lg font-medium transition-all duration-300 text-xs sm:text-sm ${
+                      activeTab === tab.id
+                        ? "bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] text-white shadow-lg"
+                        : "text-gray-400 hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    {tab.icon}
+                    <span className="hidden sm:inline lg:inline">
+                      {tab.label}
+                    </span>
+                  </Tabs.Trigger>
+                ))}
+              </Tabs.List>
+
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="mt-8"
+                >
+                  <Tabs.Content value="overview" className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8">
+                        <h3 className="text-2xl font-semibold mb-4 flex items-center">
+                          <Monitor className="w-8 h-8 text-[#9E4AF2] mr-3" />
+                          What is Katharos?
+                        </h3>
+                        <p className="text-gray-300 leading-relaxed">
+                          Katharos is a secure data-sanitization solution
+                          distributed as a bootable custom Debian ISO containing
+                          an Electron application with React + TypeScript for a
+                          responsive, user-friendly interface, Python backend
+                          engine with WebSocket-based real-time communication,
+                          and multiple wiping methods.
+                        </p>
+                      </div>
+                      <div className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8">
+                        <h3 className="text-2xl font-semibold mb-4 flex items-center">
+                          <Globe className="w-8 h-8 text-[#9E4AF2] mr-3" />
+                          Why Katharos?
+                        </h3>
+                        <p className="text-gray-300 leading-relaxed">
+                          Millions of devices are hoarded because users fear
+                          data breaches from discarded drives. Existing tools
+                          are complex or lack tamper-proof certificates.
+                          Katharos makes secure wiping accessible, auditable,
+                          and trustworthy.
+                        </p>
+                      </div>
+                    </div>
+                  </Tabs.Content>
+
+                  <Tabs.Content value="features">
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                      {wipingMethods.map((method, index) => (
+                      {features.map((feature, index) => (
                         <motion.div
                           key={index}
                           initial={{ opacity: 0, scale: 0.9 }}
@@ -872,590 +852,602 @@ const About = () => {
                           transition={{ delay: index * 0.1 }}
                           className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300 group hover:scale-105"
                         >
-                          <div className="flex items-center mb-4">
-                            <div
-                              className={`p-3 rounded-xl bg-gradient-to-r ${method.color} mr-4 group-hover:scale-110 transition-transform duration-300`}
-                            >
-                              <div className="text-white">{method.icon}</div>
-                            </div>
-                            <h3 className="text-lg font-semibold">
-                              {method.type}
-                            </h3>
+                          <div className="text-[#9E4AF2] mb-4 group-hover:scale-110 transition-transform duration-300">
+                            {feature.icon}
                           </div>
-
-                          <div className="space-y-3 text-sm">
-                            <div>
-                              <span className="text-[#b19eef] font-medium">
-                                Method:{" "}
-                              </span>
-                              <span className="text-gray-300">
-                                {method.method}
-                              </span>
-                            </div>
-                            <div>
-                              <span className="text-[#b19eef] font-medium">
-                                Verify:{" "}
-                              </span>
-                              <span className="text-gray-300">
-                                {method.verify}
-                              </span>
-                            </div>
-                            <div>
-                              <span className="text-[#b19eef] font-medium">
-                                Progress:{" "}
-                              </span>
-                              <span className="text-gray-300">
-                                {method.progress}
-                              </span>
-                            </div>
-                            {method.advantage && (
-                              <div className="mt-4 p-3 bg-green-900/20 border border-green-500/30 rounded-lg">
-                                <span className="text-green-400 font-medium">
-                                  Advantage:{" "}
-                                </span>
-                                <span className="text-green-300 text-xs">
-                                  {method.advantage}
-                                </span>
-                              </div>
-                            )}
-                          </div>
+                          <h3 className="text-lg font-semibold mb-3">
+                            {feature.title}
+                          </h3>
+                          <p className="text-gray-300 text-sm">
+                            {feature.description}
+                          </p>
                         </motion.div>
                       ))}
                     </div>
+                  </Tabs.Content>
 
-                    <div className="bg-gradient-to-r from-[#422A83]/20 to-[#9E4AF2]/20 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8">
-                      <h3 className="text-2xl font-semibold mb-6 flex items-center">
-                        <Shield className="w-8 h-8 text-[#9E4AF2] mr-3" />
-                        Safety Measures
-                      </h3>
-                      <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-                        {safetyMeasures.map((measure, index) => (
+                  <Tabs.Content value="wiping">
+                    <div className="space-y-8">
+                      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                        {wipingMethods.map((method, index) => (
                           <motion.div
                             key={index}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.1 }}
-                            className="flex items-start space-x-4"
+                            className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300 group hover:scale-105"
                           >
-                            <div className="text-[#9E4AF2] mt-1">
-                              {measure.icon}
+                            <div className="flex items-center mb-4">
+                              <div
+                                className={`p-3 rounded-xl bg-gradient-to-r ${method.color} mr-4 group-hover:scale-110 transition-transform duration-300`}
+                              >
+                                <div className="text-white">{method.icon}</div>
+                              </div>
+                              <h3 className="text-lg font-semibold">
+                                {method.type}
+                              </h3>
                             </div>
-                            <div>
-                              <h4 className="font-semibold mb-2">
-                                {measure.title}
-                              </h4>
-                              <p className="text-gray-300 text-sm">
-                                {measure.description}
-                              </p>
+
+                            <div className="space-y-3 text-sm">
+                              <div>
+                                <span className="text-[#b19eef] font-medium">
+                                  Method:{" "}
+                                </span>
+                                <span className="text-gray-300">
+                                  {method.method}
+                                </span>
+                              </div>
+                              <div>
+                                <span className="text-[#b19eef] font-medium">
+                                  Verify:{" "}
+                                </span>
+                                <span className="text-gray-300">
+                                  {method.verify}
+                                </span>
+                              </div>
+                              <div>
+                                <span className="text-[#b19eef] font-medium">
+                                  Progress:{" "}
+                                </span>
+                                <span className="text-gray-300">
+                                  {method.progress}
+                                </span>
+                              </div>
+                              {method.advantage && (
+                                <div className="mt-4 p-3 bg-green-900/20 border border-green-500/30 rounded-lg">
+                                  <span className="text-green-400 font-medium">
+                                    Advantage:{" "}
+                                  </span>
+                                  <span className="text-green-300 text-xs">
+                                    {method.advantage}
+                                  </span>
+                                </div>
+                              )}
                             </div>
                           </motion.div>
                         ))}
                       </div>
-                    </div>
-                  </div>
-                </Tabs.Content>
 
-                <Tabs.Content value="tech">
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                    {techStack.map((stack, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6"
-                      >
-                        <h3 className="text-lg font-semibold mb-4 text-[#b19eef]">
-                          {stack.category}
+                      <div className="bg-gradient-to-r from-[#422A83]/20 to-[#9E4AF2]/20 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8">
+                        <h3 className="text-2xl font-semibold mb-6 flex items-center">
+                          <Shield className="w-8 h-8 text-[#9E4AF2] mr-3" />
+                          Safety Measures
                         </h3>
-                        <ul className="space-y-2">
-                          {stack.items.map((item, itemIndex) => (
-                            <li
-                              key={itemIndex}
-                              className="flex items-center text-gray-300 text-sm"
+                        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                          {safetyMeasures.map((measure, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.1 }}
+                              className="flex items-start space-x-4"
                             >
-                              <CheckCircle className="w-3 h-3 text-green-400 mr-2 flex-shrink-0" />
-                              {item}
-                            </li>
+                              <div className="text-[#9E4AF2] mt-1">
+                                {measure.icon}
+                              </div>
+                              <div>
+                                <h4 className="font-semibold mb-2">
+                                  {measure.title}
+                                </h4>
+                                <p className="text-gray-300 text-sm">
+                                  {measure.description}
+                                </p>
+                              </div>
+                            </motion.div>
                           ))}
-                        </ul>
-                      </motion.div>
-                    ))}
-                  </div>
-                </Tabs.Content>
-
-                <Tabs.Content value="security">
-                  <div className="space-y-8">
-                    <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 backdrop-blur-xl border border-green-500/30 rounded-2xl p-8">
-                      <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
-                        <div>
-                          <h3 className="text-2xl font-semibold mb-4 flex items-center">
-                            <Shield className="w-8 h-8 text-green-400 mr-3" />
-                            Tamper-Proof Verification
-                          </h3>
-                          <ul className="space-y-3 text-gray-300">
-                            <li className="flex items-start">
-                              <ArrowRight className="w-5 h-5 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                              SHA-256 hash generation for certificate data
-                              integrity
-                            </li>
-                            <li className="flex items-start">
-                              <ArrowRight className="w-5 h-5 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                              HTML/PDF/JSON certificate generation with unique
-                              IDs
-                            </li>
-                            <li className="flex items-start">
-                              <ArrowRight className="w-5 h-5 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                              Complete audit trail with timestamps and wipe
-                              parameters
-                            </li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h3 className="text-2xl font-semibold mb-4 flex items-center">
-                            <Mail className="w-8 h-8 text-blue-400 mr-3" />
-                            Automated Delivery
-                          </h3>
-                          <ul className="space-y-3 text-gray-300">
-                            <li className="flex items-start">
-                              <ArrowRight className="w-5 h-5 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                              Gmail API integration with OAuth2 authentication
-                            </li>
-                            <li className="flex items-start">
-                              <ArrowRight className="w-5 h-5 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                              Automatic latest certificate detection and sending
-                            </li>
-                            <li className="flex items-start">
-                              <ArrowRight className="w-5 h-5 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                              Local storage at /tmp/katharos/certificates for
-                              backup
-                            </li>
-                          </ul>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </Tabs.Content>
-              </motion.div>
-            </AnimatePresence>
-          </Tabs.Root>
-        </div>
-      </motion.section>
+                  </Tabs.Content>
 
-      {/* Implementation Details Section  */}
-      <motion.section
-        className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#422A83]/5 to-transparent"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-      >
-        <div className="max-w-6xl mx-auto w-full">
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-playfair mb-6">
-              Implementation Details
-            </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] mx-auto mb-4"></div>
-            <p className="text-xl text-gray-300">
-              Current Status & Technical Architecture
-            </p>
-          </motion.div>
+                  <Tabs.Content value="tech">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                      {techStack.map((stack, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                          className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6"
+                        >
+                          <h3 className="text-lg font-semibold mb-4 text-[#b19eef]">
+                            {stack.category}
+                          </h3>
+                          <ul className="space-y-2">
+                            {stack.items.map((item, itemIndex) => (
+                              <li
+                                key={itemIndex}
+                                className="flex items-center text-gray-300 text-sm"
+                              >
+                                <CheckCircle className="w-3 h-3 text-green-400 mr-2 flex-shrink-0" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </Tabs.Content>
 
-          <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 mb-12">
-            {/* Backend Engine */}
-            <div
-              
-              className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300"
-            >
-              <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                <Server className="w-6 h-6 mr-3 text-[#9E4AF2]" />
-                Backend Engine (Python)
-              </h3>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  WebSocket Server: localhost with JSON protocol
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  DD Wrapper: Parses stderr for bytes written
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  Device Safety: Auto-unmounting via lsblk
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  Process Management: Graceful termination
-                </li>
-              </ul>
-            </div>
-
-            {/* Certificate System */}
-            <div
-              
-              className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300"
-            >
-              <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                <Award className="w-6 h-6 mr-3 text-[#9E4AF2]" />
-                Certificate System
-              </h3>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  Storage: /tmp/katharos/certificates/
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  Formats: HTML, PDF, JSON
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  Email: Gmail API with OAuth2
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  Auto-detection by modification time
-                </li>
-              </ul>
-            </div>
-
-            {/* Wipe Methods */}
-            <div
-              
-              className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300"
-            >
-              <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                <Zap className="w-6 h-6 mr-3 text-[#9E4AF2]" />
-                Wipe Methods Supported
-              </h3>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  Zero Fill: dd if=/dev/zero with progress
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  Random Data: dd if=/dev/urandom
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  ATA Secure Erase: hdparm for SATA SSDs
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  Cryptographic Erase: Encryption key destruction
-                </li>
-              </ul>
-            </div>
-
-            {/* Safety Features */}
-            <div
-              
-              className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300"
-            >
-              <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
-                <Shield className="w-6 h-6 mr-3 text-[#9E4AF2]" />
-                Safety Features
-              </h3>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  Device unmounting checks
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  Process cleanup & sync
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  Graceful error handling
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
-                  Test mode for development
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Frontend Integration */}
-          <div
-            
-            className="bg-gradient-to-r from-[#422A83]/20 to-[#9E4AF2]/20 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8 mb-12"
-          >
-            <h3 className="text-2xl font-semibold text-white mb-6 flex items-center">
-              <Monitor className="w-8 h-8 mr-3 text-[#9E4AF2]" />
-              Frontend Integration
-            </h3>
-            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-              <div>
-                <h4 className="text-lg font-semibold text-[#b19eef] mb-3">
-                  Real-time Communication
-                </h4>
-                <ul className="space-y-2 text-gray-300 text-sm">
-                  <li>• WebSocket Client: Connects to localhost</li>
-                  <li>• Progress Display: Shows actual progress percentage</li>
-                  <li>• Type Safety: Proper TypeScript interfaces</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-[#b19eef] mb-3">
-                  User Interface
-                </h4>
-                <ul className="space-y-2 text-gray-300 text-sm">
-                  <li>• Email Form: Input validation for certificates</li>
-                  <li>
-                    • Progress Tracking: Current/total passes, bytes written
-                  </li>
-                  <li>• API Responses: Consistent format handling</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Deployment & Distribution */}
-          <div
-            
-            className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8"
-          >
-            <h3 className="text-2xl font-semibold text-white mb-6 flex items-center">
-              <Globe className="w-8 h-8 mr-3 text-[#9E4AF2]" />
-              Deployment & Distribution
-            </h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-              <div>
-                <h4 className="text-lg font-semibold text-[#b19eef] mb-3">
-                  Development Setup
-                </h4>
-                <ul className="space-y-2 text-gray-300 text-sm">
-                  <li>• Python 3.13+ with asyncio, websockets</li>
-                  <li>• Node.js with Electron, React, TypeScript</li>
-                  <li>• Gmail API credentials (OAuth2)</li>
-                  <li>• Test mode for safe development</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-[#b19eef] mb-3">
-                  Production Distribution
-                </h4>
-                <ul className="space-y-2 text-gray-300 text-sm">
-                  <li>• Custom Debian-based live system</li>
-                  <li>• Auto-launch on boot with backend services</li>
-                  <li>• Single ISO file download</li>
-                  <li>• No installation required</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-[#b19eef] mb-3">
-                  Security Considerations
-                </h4>
-                <ul className="space-y-2 text-gray-300 text-sm">
-                  <li>• OAuth2 tokens embedded in ISO</li>
-                  <li>• Pre-configured sudo access</li>
-                  <li>• Process isolation & cleanup</li>
-                  <li>• Live environment security</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Competitive Comparison Section */}
-      <motion.section
-        className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-      >
-        <div className="max-w-6xl mx-auto w-full">
-          <div  className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-playfair mb-6">
-              How Katharos Is Different
-            </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] mx-auto mb-4"></div>
-            <p className="text-xl text-gray-300">Competitive Positioning</p>
-          </div>
-
-          <div className="overflow-x-auto">
-            <div className=" bg-gray-900/50 min-w-max backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-4 sm:p-6 lg:p-8">
-              <table className="w-full min-w-[600px] sm:min-w-[800px]">
-                <thead className="">
-                  <tr className="border-b border-gray-700">
-                    <th className="text-left py-3 sm:py-4 px-3 sm:px-6 text-sm sm:text-lg font-semibold text-[#b19eef]">
-                      Feature
-                    </th>
-                    <th className="text-center py-3 sm:py-4 px-2 sm:px-6">
-                      <div className="flex flex-col items-center">
-                        <span className="text-sm sm:text-lg font-bold text-white">
-                          Katharos
-                        </span>
-                      </div>
-                    </th>
-                    <th className="text-center py-3 sm:py-4 px-2 sm:px-6">
-                      <div className="flex flex-col items-center">
-                        <span className="text-sm sm:text-lg font-semibold text-gray-300">
-                          DBAN
-                        </span>
-                      </div>
-                    </th>
-                    <th className="text-center py-3 sm:py-4 px-2 sm:px-6">
-                      <div className="flex flex-col items-center">
-                        <span className="text-sm sm:text-lg font-semibold text-gray-300">
-                          Vendor
-                        </span>
-                      </div>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    {
-                      feature: "Bootable Solution",
-                      icon: <Laptop className="w-5 h-5" />,
-                      katharos: "Custom Debian ISO + Modern GUI",
-                      dban: "Basic bootable",
-                      vendor: "Linux Varies",
-                    },
-                    {
-                      feature: "Real-time Progress",
-                      icon: <Activity className="w-5 h-5" />,
-                      katharos: "WebSocket + cli parsing",
-                      dban: "Basic text output",
-                      vendor: "Limited",
-                    },
-                    {
-                      feature: "Email Certificates",
-                      icon: <Mail className="w-5 h-5" />,
-                      katharos: "Gmail API integration",
-                      dban: "No certificates",
-                      vendor: "Local only",
-                    },
-                    {
-                      feature: "Multi-platform",
-                      icon: <Globe className="w-5 h-5" />,
-                      katharos: "Bootable on any system",
-                      dban: "Linux bootable",
-                      vendor: "Vendor specific",
-                    },
-                    {
-                      feature: "Safety Features",
-                      icon: <Shield className="w-5 h-5" />,
-                      katharos: "Auto-unmount + cleanup",
-                      dban: "Basic",
-                      vendor: "Varies",
-                    },
-                    {
-                      feature: "UI/UX",
-                      icon: <Monitor className="w-5 h-5" />,
-                      katharos: "React + TypeScript",
-                      dban: "CLI/ncurses",
-                      vendor: "Vendor GUIs",
-                    },
-                  ].map((row, index) => (
-                    <motion.tr
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="border-b border-gray-800 hover:bg-gray-800/30 transition-colors duration-300"
-                    >
-                      <td className="py-3 sm:py-4 px-3 sm:px-6">
-                        <div className="flex items-center">
-                          <div className="text-[#9E4AF2] mr-2 sm:mr-3">
-                            {row.icon}
+                  <Tabs.Content value="security">
+                    <div className="space-y-8">
+                      <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 backdrop-blur-xl border border-green-500/30 rounded-2xl p-8">
+                        <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
+                          <div>
+                            <h3 className="text-2xl font-semibold mb-4 flex items-center">
+                              <Shield className="w-8 h-8 text-green-400 mr-3" />
+                              Tamper-Proof Verification
+                            </h3>
+                            <ul className="space-y-3 text-gray-300">
+                              <li className="flex items-start">
+                                <ArrowRight className="w-5 h-5 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                                SHA-256 hash generation for certificate data
+                                integrity
+                              </li>
+                              <li className="flex items-start">
+                                <ArrowRight className="w-5 h-5 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                                HTML/PDF/JSON certificate generation with unique
+                                IDs
+                              </li>
+                              <li className="flex items-start">
+                                <ArrowRight className="w-5 h-5 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                                Complete audit trail with timestamps and wipe
+                                parameters
+                              </li>
+                            </ul>
                           </div>
-                          <span className="font-medium text-white text-sm sm:text-base">
-                            {row.feature}
-                          </span>
+                          <div>
+                            <h3 className="text-2xl font-semibold mb-4 flex items-center">
+                              <Mail className="w-8 h-8 text-blue-400 mr-3" />
+                              Automated Delivery
+                            </h3>
+                            <ul className="space-y-3 text-gray-300">
+                              <li className="flex items-start">
+                                <ArrowRight className="w-5 h-5 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                                Gmail API integration with OAuth2 authentication
+                              </li>
+                              <li className="flex items-start">
+                                <ArrowRight className="w-5 h-5 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                                Automatic latest certificate detection and
+                                sending
+                              </li>
+                              <li className="flex items-start">
+                                <ArrowRight className="w-5 h-5 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                                Local storage at /tmp/katharos/certificates for
+                                backup
+                              </li>
+                            </ul>
+                          </div>
                         </div>
-                      </td>
-                      <td className="py-3 sm:py-4 px-2 sm:px-6 text-center">
-                        <div className="px-1 sm:px-4 py-2">
-                          <span className="text-white font-medium text-xs sm:text-sm">
-                            {row.katharos}
-                          </span>
-                        </div>
-                      </td>
-                      <td className="py-3 sm:py-4 px-2 sm:px-6 text-center">
-                        <div className="px-1 sm:px-4 py-2">
-                          <span className="text-gray-300 text-xs sm:text-sm">
-                            {row.dban}
-                          </span>
-                        </div>
-                      </td>
-                      <td className="py-3 sm:py-4 px-2 sm:px-6 text-center">
-                        <div className="px-1 sm:px-4 py-2">
-                          <span className="text-gray-300 text-xs sm:text-sm">
-                            {row.vendor}
-                          </span>
-                        </div>
-                      </td>
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                      </div>
+                    </div>
+                  </Tabs.Content>
+                </motion.div>
+              </AnimatePresence>
+            </Tabs.Root>
           </div>
+        </motion.section>
 
-          <div  className="mt-8 text-center">
-            <div className="bg-gradient-to-r from-[#422A83]/20 to-[#9E4AF2]/20 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8">
-              <p className="text-lg text-gray-300 leading-relaxed">
-                <span className="text-[#b19eef] font-semibold">
-                  Katharos combines
-                </span>{" "}
-                the power of professional wiping tools with modern desktop UX
-                and automated certificate delivery — making secure data
-                destruction
-                <span className="text-[#9E4AF2] font-semibold">
-                  {" "}
-                  accessible to everyone
-                </span>
-                .
+        {/* Implementation Details Section  */}
+        <motion.section
+          className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#422A83]/5 to-transparent"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+        >
+          <div className="max-w-6xl mx-auto w-full">
+            <motion.div variants={itemVariants} className="text-center mb-12">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-playfair mb-6">
+                Implementation Details
+              </h2>
+              <div className="w-16 h-1 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] mx-auto mb-4"></div>
+              <p className="text-xl text-gray-300">
+                Current Status & Technical Architecture
               </p>
+            </motion.div>
+
+            <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 mb-12">
+              {/* Backend Engine */}
+              <div className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300">
+                <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
+                  <Server className="w-6 h-6 mr-3 text-[#9E4AF2]" />
+                  Backend Engine (Python)
+                </h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    WebSocket Server: localhost with JSON protocol
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    DD Wrapper: Parses stderr for bytes written
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    Device Safety: Auto-unmounting via lsblk
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    Process Management: Graceful termination
+                  </li>
+                </ul>
+              </div>
+
+              {/* Certificate System */}
+              <div className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300">
+                <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
+                  <Award className="w-6 h-6 mr-3 text-[#9E4AF2]" />
+                  Certificate System
+                </h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    Storage: /tmp/katharos/certificates/
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    Formats: HTML, PDF, JSON
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    Email: Gmail API with OAuth2
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    Auto-detection by modification time
+                  </li>
+                </ul>
+              </div>
+
+              {/* Wipe Methods */}
+              <div className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300">
+                <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
+                  <Zap className="w-6 h-6 mr-3 text-[#9E4AF2]" />
+                  Wipe Methods Supported
+                </h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    Zero Fill: dd if=/dev/zero with progress
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    Random Data: dd if=/dev/urandom
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    ATA Secure Erase: hdparm for SATA SSDs
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    Cryptographic Erase: Encryption key destruction
+                  </li>
+                </ul>
+              </div>
+
+              {/* Safety Features */}
+              <div className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-6 hover:border-[#9E4AF2]/60 transition-all duration-300">
+                <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
+                  <Shield className="w-6 h-6 mr-3 text-[#9E4AF2]" />
+                  Safety Features
+                </h3>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    Device unmounting checks
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    Process cleanup & sync
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    Graceful error handling
+                  </li>
+                  <li className="flex items-start">
+                    <ArrowRight className="w-4 h-4 text-[#9E4AF2] mr-2 mt-0.5 flex-shrink-0" />
+                    Test mode for development
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Frontend Integration */}
+            <div className="bg-gradient-to-r from-[#422A83]/20 to-[#9E4AF2]/20 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8 mb-12">
+              <h3 className="text-2xl font-semibold text-white mb-6 flex items-center">
+                <Monitor className="w-8 h-8 mr-3 text-[#9E4AF2]" />
+                Frontend Integration
+              </h3>
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                <div>
+                  <h4 className="text-lg font-semibold text-[#b19eef] mb-3">
+                    Real-time Communication
+                  </h4>
+                  <ul className="space-y-2 text-gray-300 text-sm">
+                    <li>• WebSocket Client: Connects to localhost</li>
+                    <li>
+                      • Progress Display: Shows actual progress percentage
+                    </li>
+                    <li>• Type Safety: Proper TypeScript interfaces</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-[#b19eef] mb-3">
+                    User Interface
+                  </h4>
+                  <ul className="space-y-2 text-gray-300 text-sm">
+                    <li>• Email Form: Input validation for certificates</li>
+                    <li>
+                      • Progress Tracking: Current/total passes, bytes written
+                    </li>
+                    <li>• API Responses: Consistent format handling</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Deployment & Distribution */}
+            <div className="bg-gray-900/50 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8">
+              <h3 className="text-2xl font-semibold text-white mb-6 flex items-center">
+                <Globe className="w-8 h-8 mr-3 text-[#9E4AF2]" />
+                Deployment & Distribution
+              </h3>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                <div>
+                  <h4 className="text-lg font-semibold text-[#b19eef] mb-3">
+                    Development Setup
+                  </h4>
+                  <ul className="space-y-2 text-gray-300 text-sm">
+                    <li>• Python 3.13+ with asyncio, websockets</li>
+                    <li>• Node.js with Electron, React, TypeScript</li>
+                    <li>• Gmail API credentials (OAuth2)</li>
+                    <li>• Test mode for safe development</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-[#b19eef] mb-3">
+                    Production Distribution
+                  </h4>
+                  <ul className="space-y-2 text-gray-300 text-sm">
+                    <li>• Custom Debian-based live system</li>
+                    <li>• Auto-launch on boot with backend services</li>
+                    <li>• Single ISO file download</li>
+                    <li>• No installation required</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-[#b19eef] mb-3">
+                    Security Considerations
+                  </h4>
+                  <ul className="space-y-2 text-gray-300 text-sm">
+                    <li>• OAuth2 tokens embedded in ISO</li>
+                    <li>• Pre-configured sudo access</li>
+                    <li>• Process isolation & cleanup</li>
+                    <li>• Live environment security</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </motion.section>
+        </motion.section>
 
-      {/* CTA Section */}
-      <motion.section
-        className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#422A83]/20 to-[#9E4AF2]/20"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-      >
-        <div className="max-w-4xl mx-auto w-full text-center">
-          <motion.div variants={itemVariants}>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-playfair mb-6">
-              Ready for SIH 2025
-            </h2>
-            <p className="text-xl text-gray-300 mb-8">
-              Katharos represents the future of secure data sanitization -
-              accessible, trustworthy, and environmentally conscious.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                className="rainbow-border px-8 py-4 bg-white/10 backdrop-blur-xl text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link to="/docs">View Documentation</Link>
-              </motion.button>
-              <motion.button
-                className="px-8 py-4 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] text-white font-semibold rounded-xl hover:opacity-90 transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Download ISO
-              </motion.button>
+        {/* Competitive Comparison Section */}
+        <motion.section
+          className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+        >
+          <div className="max-w-6xl mx-auto w-full">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-playfair mb-6">
+                How Katharos Is Different
+              </h2>
+              <div className="w-16 h-1 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] mx-auto mb-4"></div>
+              <p className="text-xl text-gray-300">Competitive Positioning</p>
             </div>
-          </motion.div>
-        </div>
-      </motion.section>
+
+            <div className="overflow-x-auto">
+              <div className=" bg-gray-900/50 min-w-max backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-4 sm:p-6 lg:p-8">
+                <table className="w-full min-w-[600px] sm:min-w-[800px]">
+                  <thead className="">
+                    <tr className="border-b border-gray-700">
+                      <th className="text-left py-3 sm:py-4 px-3 sm:px-6 text-sm sm:text-lg font-semibold text-[#b19eef]">
+                        Feature
+                      </th>
+                      <th className="text-center py-3 sm:py-4 px-2 sm:px-6">
+                        <div className="flex flex-col items-center">
+                          <span className="text-sm sm:text-lg font-bold text-white">
+                            Katharos
+                          </span>
+                        </div>
+                      </th>
+                      <th className="text-center py-3 sm:py-4 px-2 sm:px-6">
+                        <div className="flex flex-col items-center">
+                          <span className="text-sm sm:text-lg font-semibold text-gray-300">
+                            DBAN
+                          </span>
+                        </div>
+                      </th>
+                      <th className="text-center py-3 sm:py-4 px-2 sm:px-6">
+                        <div className="flex flex-col items-center">
+                          <span className="text-sm sm:text-lg font-semibold text-gray-300">
+                            Vendor
+                          </span>
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      {
+                        feature: "Bootable Solution",
+                        icon: <Laptop className="w-5 h-5" />,
+                        katharos: "Custom Debian ISO + Modern GUI",
+                        dban: "Basic bootable",
+                        vendor: "Linux Varies",
+                      },
+                      {
+                        feature: "Real-time Progress",
+                        icon: <Activity className="w-5 h-5" />,
+                        katharos: "WebSocket + cli parsing",
+                        dban: "Basic text output",
+                        vendor: "Limited",
+                      },
+                      {
+                        feature: "Email Certificates",
+                        icon: <Mail className="w-5 h-5" />,
+                        katharos: "Gmail API integration",
+                        dban: "No certificates",
+                        vendor: "Local only",
+                      },
+                      {
+                        feature: "Multi-platform",
+                        icon: <Globe className="w-5 h-5" />,
+                        katharos: "Bootable on any system",
+                        dban: "Linux bootable",
+                        vendor: "Vendor specific",
+                      },
+                      {
+                        feature: "Safety Features",
+                        icon: <Shield className="w-5 h-5" />,
+                        katharos: "Auto-unmount + cleanup",
+                        dban: "Basic",
+                        vendor: "Varies",
+                      },
+                      {
+                        feature: "UI/UX",
+                        icon: <Monitor className="w-5 h-5" />,
+                        katharos: "React + TypeScript",
+                        dban: "CLI/ncurses",
+                        vendor: "Vendor GUIs",
+                      },
+                    ].map((row, index) => (
+                      <motion.tr
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="border-b border-gray-800 hover:bg-gray-800/30 transition-colors duration-300"
+                      >
+                        <td className="py-3 sm:py-4 px-3 sm:px-6">
+                          <div className="flex items-center">
+                            <div className="text-[#9E4AF2] mr-2 sm:mr-3">
+                              {row.icon}
+                            </div>
+                            <span className="font-medium text-white text-sm sm:text-base">
+                              {row.feature}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="py-3 sm:py-4 px-2 sm:px-6 text-center">
+                          <div className="px-1 sm:px-4 py-2">
+                            <span className="text-white font-medium text-xs sm:text-sm">
+                              {row.katharos}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="py-3 sm:py-4 px-2 sm:px-6 text-center">
+                          <div className="px-1 sm:px-4 py-2">
+                            <span className="text-gray-300 text-xs sm:text-sm">
+                              {row.dban}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="py-3 sm:py-4 px-2 sm:px-6 text-center">
+                          <div className="px-1 sm:px-4 py-2">
+                            <span className="text-gray-300 text-xs sm:text-sm">
+                              {row.vendor}
+                            </span>
+                          </div>
+                        </td>
+                      </motion.tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="mt-8 text-center">
+              <div className="bg-gradient-to-r from-[#422A83]/20 to-[#9E4AF2]/20 backdrop-blur-xl border border-[#9E4AF2]/30 rounded-2xl p-8">
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  <span className="text-[#b19eef] font-semibold">
+                    Katharos combines
+                  </span>{" "}
+                  the power of professional wiping tools with modern desktop UX
+                  and automated certificate delivery — making secure data
+                  destruction
+                  <span className="text-[#9E4AF2] font-semibold">
+                    {" "}
+                    accessible to everyone
+                  </span>
+                  .
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* CTA Section */}
+        <motion.section
+          className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#422A83]/20 to-[#9E4AF2]/20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+        >
+          <div className="max-w-4xl mx-auto w-full text-center">
+            <motion.div variants={itemVariants}>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-playfair mb-6">
+                Ready for SIH 2025
+              </h2>
+              <p className="text-xl text-gray-300 mb-8">
+                Katharos represents the future of secure data sanitization -
+                accessible, trustworthy, and environmentally conscious.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <motion.button
+                  className="rainbow-border px-8 py-4 bg-white/10 backdrop-blur-xl text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link to="/docs">View Documentation</Link>
+                </motion.button>
+                {/* <motion.button
+                  className="px-8 py-4 bg-gradient-to-r from-[#9E4AF2] to-[#b19eef] text-white font-semibold rounded-xl hover:opacity-90 transition-all duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Download ISO
+                </motion.button> */}
+              </div>
+            </motion.div>
+          </div>
+        </motion.section>
+      </div>
+      <Footer />
     </div>
   );
 };

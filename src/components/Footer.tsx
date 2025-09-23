@@ -22,7 +22,10 @@ function Footer() {
           <div className="max-w-7xl mx-auto px-4 md:px-8 w-full py-4 md:py-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 text-white">
               <div className="lg:col-span-1 text-center md:text-left">
-                <Link to="/" className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                <Link
+                  to="/"
+                  className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
+                >
                   KatharOS
                 </Link>
                 <p className="text-sm md:text-lg text-gray-300 mb-2 md:mb-4 leading-relaxed">
@@ -91,7 +94,9 @@ function Footer() {
                 </h4>
                 <div className="flex flex-col space-y-1 md:space-y-3">
                   <a
-                    href="#"
+                    href="https://github.com/vivekkedia22"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-gray-300 hover:text-purple-300 transition-all duration-200 text-sm md:text-base flex items-center justify-center md:justify-start group"
                   >
                     <span className="w-2 h-2 md:w-3 md:h-3 bg-purple-400 rounded-full mr-3 group-hover:bg-purple-300 transition-colors"></span>

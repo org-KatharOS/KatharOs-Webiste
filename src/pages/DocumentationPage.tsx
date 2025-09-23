@@ -139,7 +139,7 @@ export default function DocumentationPage() {
           <div className="mb-8">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-xl font-bold text-white mb-2 font-playfair">
+                <h1 className="text-xl font-bold text-white mb-2 ">
                   <Link to="/">KatharOS</Link>
                 </h1>
                 <p className="text-sm text-gray-400">
