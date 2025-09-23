@@ -1,0 +1,162 @@
+
+What is Katharos? 🧹
+Katharos is a secure data-sanitization solution built as a modern cross-platform desktop application using:
+•	Electron framework with React + TypeScript for a responsive, user-friendly interface
+•	WebSocket-based real-time communication for live progress updates and drive management
+•	Comprehensive safety measures with multiple confirmation modals and keyboard navigation
+•	Local certificate storage with email delivery and tamper-proof signing
+It’s designed to help individuals, businesses and recyclers safely dispose or resale IT assets without fear of data recovery, featuring modern UI/UX with dark theme and accessibility support. 
+________________________________________
+Why Katharos? — The Problem It Solves ♻️
+•	Millions of devices are hoarded because users fear data breaches from discarded drives.
+•	Existing tools are either complex, limited to experts, or lack tamper-proof certificates.
+•	Katharos makes secure wiping accessible, auditable, and trustworthy for general public and organizations — supporting e-waste reduction and the circular economy.
+________________________________________
+High-level Flow — How Katharos Works (User view) 🔁
+1.	Launch Desktop App: User launches the Katharos Electron application on Windows, macOS, or Linux.
+2.	WebSocket Connection: App establishes real-time connection to backend service at localhost:8080.
+3.	Scan Drives: User clicks "Scan Drives →" to enumerate all connected storage devices.
+4.	Select Drive: Interactive data table displays drives with keyboard/mouse navigation support.
+5.	Configure Wipe: Modal interface for selecting wipe method, passes, and certificate options.
+6.	Safety Confirmations: Sequential warning and confirmation modals prevent accidental data loss.
+7.	Real-time Wiping: Live progress updates via WebSocket with animated progress bar and status.
+8.	Certificate Generation: Signed certificates stored at /tmp/katharos/certificates with optional email delivery.
+9.	Completion: Success screen with certificate location and email confirmation.
+________________________________________
+Technical Approach & Architecture ⚙️
+Core components
+•	Electron Desktop Application — Cross-platform desktop app built with Electron 30.0.1, React 18.2.0, and TypeScript.
+•	WebSocket Communication — Real-time communication between frontend and backend services via ws library.
+•	Wipe Engine — Backend service with open-source tools: nwipe, shred, dd, hdparm, nvme-cli.
+•	Frontend GUI — React with TypeScript for modern, responsive desktop UI with Tailwind CSS 4.1.13 styling.
+•	Cert & Audit — JSON logs, SHA-256 hashes, ECDSA signatures stored locally at /tmp/katharos/certificates.
+•	Email Integration — Certificate delivery via email with validation and error handling.
+•	Optional Anchoring — IPFS / OpenTimestamps / (optional) blockchain tx for immutable proof.
+Data & control flow (simplified)
+[Desktop Electron App Launch] 
+  → WebSocket connection to backend service (localhost:8080)
+  → scan drives command via WebSocket
+  → enumerate and display detected devices in data table
+  → user selects drive and configures wipe options (method, passes, certificate)
+  → confirmation modals for safety (warning → confirmation)
+  → execute wipe with real-time progress updates via WebSocket
+  → generate certificate (if requested) stored at /tmp/katharos/certificates
+  → email certificate to user with validation
+  → completion screen with success confirmation
+________________________________________
+What Katharos Uses (Tech Stack) 🧰
+•	Desktop Framework: Electron 30.0.1 for cross-platform desktop application.
+•	Frontend: React 18.2.0 + TypeScript for type-safe UI development.
+•	Styling: Tailwind CSS 4.1.13 for modern, responsive design with custom noir theme.
+•	Build Tools: Vite 5.1.6 for fast development and building, electron-builder 24.13.3 for packaging.
+•	Communication: WebSocket (ws 8.18.3) for real-time frontend-backend communication.
+•	UI Components: React Router 7.9.1 for navigation, react-data-table-component 7.7.0 for drive listing, react-modal 3.16.3 for dialogs.
+•	Backend Tools: nwipe, hdparm, nvme-cli, dd, blkdiscard, cryptsetup (via backend service).
+•	Crypto & Audit: OpenSSL for ECDSA signing, SHA-256 hashing, certificate storage in /tmp/katharos/certificates.
+________________________________________
+Key Features — What the User Sees ✨
+Feature	What it does
+Desktop Application	Cross-platform Electron app with modern React interface and dark noir theme.
+Smart Device Detection	Auto-detects and lists all connected drives with detailed information (model, type, size, mount status, device path).
+Interactive Drive Selection	Data table-based drive listing with keyboard navigation (arrow keys, Enter, Escape) and click selection.
+Dynamic Wipe Methods	Method selection based on drive type with configurable passes and supports_passes detection.
+Real-time Progress Tracking	Live progress updates via WebSocket with percentage, current pass, method information, and animated progress bar.
+Tamper-proof Certificates	Signed certificates stored locally at /tmp/katharos/certificates with optional email delivery.
+Safety UX	Multiple confirmation modals (warning → confirmation), clear destructive action warnings, and graceful abort handling.
+Email Integration	Certificate delivery via email with input validation, error handling, and success confirmation.
+Modern UI/UX	Responsive design with custom CSS variables, smooth animations, hover effects, and accessibility features.
+Keyboard Shortcuts	Full keyboard navigation support for drive selection and modal interactions.
+________________________________________
+How Certificates Work — Tamper-proofing explained 🧾🔐
+1.	Log capture: Raw wipe output and verification outputs are captured into wipe_log.txt.
+2.	Hash & sign: log_hash = SHA-256(wipe_log) stored in certificate.json. The JSON is signed with ECDSA (private key).
+3.	Timestamp/anchor (optional): Use RFC3161 TSA or OpenTimestamps / IPFS anchoring to provide tamper-evident proof of time.
+4.	PDF: Human-readable summary (device metadata, method, timestamps, signature) + QR linking to verification URL.
+5.	Verification: Third party verifies signature against published public key and checks timestamp/anchor.
+Why this is tamper-proof: Changing certificate JSON will break the signature; certificate anchored externally adds a public immutable record.
+________________________________________
+Device-specific Wiping & Verification Logic 🔎
+HDD (rotational)
+•	Method: random overwrite or multi-pass overwrite.
+•	Verify: sample read-back and hash sectors; verify tool exit codes.
+SATA SSD
+•	Method: ATA Secure Erase (firmware command) OR cryptographic key destruction (if encrypted).
+•	Verify: firmware success codes, SMART/log checks (readback unreliable due to wear leveling).
+NVMe
+•	Method: NVMe sanitize / format commands via nvme-cli.
+•	Verify: sanitize status & controller logs.
+Android/Internal Phone
+•	Method: factory reset + key discard OR advanced vendor/provisioned wipe for rooted devices.
+•	Note: For phones, best practice is encryption + reset.
+Important: For SSDs, verification is based on controller acknowledgement — we explicitly state this limitation in the certificate.
+________________________________________
+How Katharos Is Different — Competitive Positioning 🥇
+Tool	Katharos	DBAN / nwipe	Vendor Tools	Cloud/web apps
+Bootable Live ISO	✅ Custom, auto GUI	✅ (DBAN) but legacy	Varies	❌
+Tamper-proof cert	✅ Signed + timestamp/anchor	❌ plain logs	❌ often no cert	❌
+SSD aware (firmware)	✅ ATA/NVMe workflows + advisor	Limited or manual	Vendor specific	❌
+UX for general public	✅ Guided one-click + auto-USB creator	❌ CLI/old UI	✅ vendor GUIs	❌ (can't access raw device)
+Verification portal	✅ public verification	❌	❌	❌
+Katharos is not just a wipe engine — it’s a trust platform (wipe + evidence + verification) designed for public adoption and recyclers.
+________________________________________
+UX Flow (detailed) — what a user experiences 📲
+1.	Landing: Clean interface with “Securely wipe your disks with confidence” tagline and “Scan Drives →” button.
+2.	WebSocket Connection: App establishes connection to backend service at localhost:8080 for real-time communication.
+3.	Drive Scanning: Drives enumerated via WebSocket and displayed in interactive data table with model, type, status, size, and path.
+4.	Drive Selection: Click or keyboard navigation to select drives, with selected drive details shown below table.
+5.	Wipe Configuration: Modal with drive details (left panel) and configuration options (right panel) - method selection, certificate toggle, passes configuration.
+6.	Safety Confirmations: Sequential warning modal followed by confirmation modal to prevent accidental data loss.
+7.	Progress Tracking: Real-time progress screen with animated progress bar, method info, current pass display, and WebSocket status updates.
+8.	Completion: Success screen showing certificate location (/tmp/katharos/certificates) with optional email form for certificate delivery.
+9.	Email Delivery: Validated email input with comprehensive error handling and success confirmation message.
+________________________________________
+Security & Operational Best Practices 🔒
+•	Never embed private keys in client builds. Use KMS/HSM for signing in production.
+•	Always show limitations clearly (SSD overwrite vs secure erase differences).
+•	Audit logs: append-only server storage for issued certs; provide operator ID, app version.
+•	Key rotation & revocation: publish key fingerprints & revocation list for compromised keys.
+•	No user data collection: do not upload file contents — only logs & device metadata (with user consent).
+________________________________________
+Testing & Validation (how we prove effectiveness) 🔬
+•	Recovery tests: run testdisk, photorec, foremost, bulk_extractor on wiped drives — expected no recoverable data (or only high-entropy noise).
+•	Entropy checks: sample sectors and run entropy tools to show randomness.
+•	SSD verification: validate controller sanitize/secure-erase status codes + vendor tool outputs.
+•	Edge case tests: USB-SATA bridge limitations, frozen drives, bad sectors (recommend physical destruction).
+________________________________________
+Limitations & Disclaimers ⚠️
+•	SSD cell-level proof impossible outside vendor/firmware acknowledgement (wear-leveling). Certificates will state this clearly.
+•	USB bridges may prevent firmware-level ATA commands — may require direct SATA connection.
+•	Physical failures: failing drives may not be sanitizable; recommend physical destruction.
+•	Phone OEM variations: Android/device differences may limit actions; suggest factory reset where appropriate.
+________________________________________
+Deployment & Adoption Scenarios 🏢
+•	Home users: wipe USBs, external drives before resale.
+•	SMEs / Offices: sanitize retired laptops, generate certs for asset disposition.
+•	E-waste recyclers & refurbishers: use bootable USB fleet tool + verify certificates before resale.
+•	Government / procurement: incorporate certificate flow into surplus asset workflows.
+________________________________________
+Roadmap / Future Enhancements 🚀
+•	HSM/KMS integration for production-grade signing.
+•	Mobile-friendly verification (scan QR → verify on phone).
+•	Enterprise dashboard: batch wipe jobs, fleet reporting, integrations with asset management systems.
+•	Stronger immutable anchoring: optional blockchain-based anchoring for high-value assets.
+•	Language localizations, accessible tutorials for ISO booting.
+________________________________________
+FAQs — Quick Answers 📝
+Q: How do I install and run Katharos?
+A: Katharos is an Electron desktop application. Download and install the package for your operating system (Windows, macOS, Linux). The app will establish a WebSocket connection to the backend service automatically at localhost:8080.
+Q: Can I wipe my system drive?
+A: The current desktop version is designed for external drives. For system drives, you would need to boot from external media or use the drive on another system.
+Q: Is the certificate proof absolute?
+A: Certificates prove the app ran an approved method and that the result/logs were signed. For HDDs proof is stronger (read-back verification). For SSDs we rely on controller sanitize acknowledgement; the certificate explains that limitation.
+Q: Will Katharos upload any personal files?
+A: No. It only collects device metadata and wipe/log hashes for the certificate — not user file contents. All certificates are stored locally at /tmp/katharos/certificates.
+Q: What happens if the wiping process is interrupted?
+A: The application includes safety mechanisms and progress tracking via WebSocket. You can monitor the process in real-time and the system handles interruptions gracefully with proper error handling.
+________________________________________
+Key Takeaways ✅
+•	Katharos = practical + trustworthy: an Electron desktop application with React + TypeScript GUI that combines proven wipe methods with cryptographic proof.
+•	Designed for adoption: modern UX with real-time WebSocket communication, keyboard navigation, email certificate delivery, and comprehensive safety measures.
+•	Transparency-first: signed certificates stored locally, clear limitations, email delivery with validation, and real-time progress tracking.
+
+
